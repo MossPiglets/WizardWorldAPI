@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{EBCAF785
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WizardWorldApi.Tests.Unit", "WizardWorldApi.Tests.Unit\WizardWorldApi.Tests.Unit.csproj", "{07C71F9D-4308-41DD-ADC1-01BA06A60612}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WizardWorldApi.Tests.Integrations", "WizardWorldApi.Tests.Integrations\WizardWorldApi.Tests.Integrations.csproj", "{D243A4EB-791F-4FFE-BEDA-AE3A899D36CD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,12 +25,17 @@ Global
 		{07C71F9D-4308-41DD-ADC1-01BA06A60612}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07C71F9D-4308-41DD-ADC1-01BA06A60612}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07C71F9D-4308-41DD-ADC1-01BA06A60612}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D243A4EB-791F-4FFE-BEDA-AE3A899D36CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D243A4EB-791F-4FFE-BEDA-AE3A899D36CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D243A4EB-791F-4FFE-BEDA-AE3A899D36CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D243A4EB-791F-4FFE-BEDA-AE3A899D36CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{07C71F9D-4308-41DD-ADC1-01BA06A60612} = {EBCAF785-F832-4C34-86AA-73A6FD9DB54D}
+		{D243A4EB-791F-4FFE-BEDA-AE3A899D36CD} = {EBCAF785-F832-4C34-86AA-73A6FD9DB54D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EB14AD80-2254-4914-A568-EFF822D80BA6}
