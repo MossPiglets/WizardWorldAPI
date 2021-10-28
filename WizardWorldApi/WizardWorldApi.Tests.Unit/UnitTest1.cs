@@ -2,7 +2,7 @@ using NUnit.Framework;
 
 namespace WizardWorldApi.Tests.Unit
 {
-    public class Tests
+    public class SpellMappingTests
     {
         [SetUp]
         public void Setup()
