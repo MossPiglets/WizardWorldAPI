@@ -1,7 +1,7 @@
 ﻿using System;
 using WizardWorld.Persistance.Models.Spells;
 
-namespace WizardWorld.Application.Dtos {
+namespace WizardWorld.Application.Requests.Spells {
     public class SpellDto {
         public Guid Id { get; set; }
         public string Name { get; set; }
