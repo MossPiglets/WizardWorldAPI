@@ -1,45 +1,23 @@
-name: .NET Core Desktop
+name: .NET
 
 on:
-  push:
-    branches: [ develop ]
   pull_request:
     branches: [ develop ]
 
-defaults:
-      run:
-        working-directory: ./WizardWorldAPI
-
 jobs:
-
   build:
-    runs-on: windows-latest  # For a list of available runner types, refer to
-                             # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
-    env:
-      DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+
+    runs-on: ubuntu-latest
+
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
-
-    - name: Clean
-      run: dotnet clean && dotnet nuget locals all --clear
-
-    # Install the .NET Core workload
-    - name: Install .NET Core
+    - uses: actions/checkout@v2
+    - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
-
-    # Restore
-    - name: Restore the application
+    - name: Restore dependencies
       run: dotnet restore
-
-    # Build
     - name: Build
-      run: dotnet build
-
-    # Execute all unit tests in the solution
-    - name: Execute unit tests
-      run: dotnet test
+      run: dotnet build --no-restore
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
