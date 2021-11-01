@@ -3,6 +3,10 @@ name: .NET
 on:
   pull_request:
     branches: [ develop ]
+    
+defaults:
+      run:
+        working-directory: ./WizardWorldApi
 
 jobs:
   build:
@@ -20,4 +24,4 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: UnitTesta
-      run: dotnet test --no-build --verbosity normal WizardWorldApi/WizardWorldApi.Tests.Unit/WizardWorldApi.Tests.Unit.csproj
+      run: dotnet test --no-build --verbosity normal WizardWorldApi.Tests.Unit/WizardWorldApi.Tests.Unit.csproj
