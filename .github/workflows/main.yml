@@ -23,5 +23,5 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
-    - name: UnitTesta
+    - name: Unit Test
       run: dotnet test --no-build --verbosity normal WizardWorldApi.Tests.Unit/WizardWorldApi.Tests.Unit.csproj
