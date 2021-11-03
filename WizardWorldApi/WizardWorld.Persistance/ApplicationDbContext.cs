@@ -11,5 +11,6 @@ namespace WizardWorld.Persistance {
             modelBuilder.Entity<Spell>()
                 .HasKey(a => a.Id);
         }
+        // jakos to zmien
     }
 }
