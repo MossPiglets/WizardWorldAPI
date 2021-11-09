@@ -8,9 +8,6 @@ namespace WizardWorld.Persistance {
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
-            modelBuilder.Entity<Spell>()
-                .HasKey(a => a.Id);
         }
-        // jakos to zmien
     }
 }
