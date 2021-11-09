@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using WizardWorld.Application.Requests.Spells;
 using WizardWorld.Application.Requests.Spells.GetSpells;
+using WizardWorld.Application.Requests.Spells.Queries.GetSpellById;
 
 namespace WizardWorldApi.Controllers {
 	[ApiController]
@@ -18,6 +20,14 @@ namespace WizardWorldApi.Controllers {
 		[HttpGet]
 		public async Task<List<SpellDto>> Get() {
 			var query = new GetSpellsQuery();
+			return await _mediator.Send(query);
+		}
+
+		[HttpGet("{id}")]
+		public async Task<SpellDto> GetById([FromRoute]Guid id) {
+			var query = new GetSpellByIdQuery {
+				Id = id
+			};
 			return await _mediator.Send(query);
 		}
 	}
