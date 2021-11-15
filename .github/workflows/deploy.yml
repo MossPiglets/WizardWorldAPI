@@ -20,10 +20,13 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
       - name: Deploy to Heroku
-        uses: behe/heroku-build@v1
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
-          app-name: wizard-world-api
-          api-key:  ${{secrets.HEROKU_KEY}}
-          path: WizardWorldApi
+          heroku_api_key: ${{secrets.HEROKU_KEY}}
+          heroku_app_name: wizard-world-api #Must be unique in Heroku
+          heroku_email: truemosspiglets@gmail.com
+          usedocker: true
+          appdir: WizardWorldApi
+          
