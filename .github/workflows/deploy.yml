@@ -44,5 +44,5 @@ jobs:
           # Your Heroku App Name
           app_name: wizard-world-api
           # Dokerfile path
-          dockerfile_path: WizardWorldApi/Dockerfile
+          dockerfile_path: WizardWorldApi
  
