@@ -12,6 +12,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using MediatR;
+using MediatR.AspNet;
 using WizardWorld.Application;
 using WizardWorld.Persistance;
 
@@ -31,8 +33,8 @@ namespace WizardWorldApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddApplicationDbContext(Configuration.GetConnectionString("DefaultConnection"));
-            services.AddControllers();
-            services.AddAppAutoMapper();
+            services.AddApplication();
+            services.AddControllers(o => o.Filters.AddMediatrExceptions());
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WizardWorldApi", Version = "v1" });

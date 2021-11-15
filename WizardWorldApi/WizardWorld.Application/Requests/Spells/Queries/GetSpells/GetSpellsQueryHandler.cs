@@ -7,7 +7,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using WizardWorld.Persistance;
 
-namespace WizardWorld.Application.Requests.Spells.GetSpells {
+namespace WizardWorld.Application.Requests.Spells.Queries.GetSpells {
 	public class GetSpellsQueryHandler : IRequestHandler<GetSpellsQuery, List<SpellDto>> {
 		private readonly ApplicationDbContext _context;
 		private readonly IMapper _mapper;
