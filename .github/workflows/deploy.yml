@@ -42,7 +42,7 @@ jobs:
           # Your Heroku API Key
           api_key: ${{secrets.HEROKU_KEY}}
           # Your Heroku App Name
-          app_name: WizardWorldApi
+          app_name: wizard-world-api
           # Dokerfile path
           dockerfile_path: WizardWorldApi/Dockerfile
  
