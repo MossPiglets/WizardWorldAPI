@@ -7,7 +7,7 @@ namespace WizardWorldApi {
         public static string Get() {
             var databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
             if (string.IsNullOrEmpty(databaseUrl)) {
-                throw new NotFoundException("Database Url is not found.");
+                throw new NullReferenceException();
             }
             var databaseUri = new Uri(databaseUrl);
             var userInfo = databaseUri.UserInfo.Split(':');
