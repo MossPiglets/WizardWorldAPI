@@ -1,10 +1,14 @@
 ﻿using System;
+using MediatR.AspNet.Exceptions;
 using Npgsql;
 
 namespace WizardWorldApi {
-    public static class ConnectionStringBuilder {
-        public static string Build() {
+    public static class HerokuConnectingString {
+        public static string Get() {
             var databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+            if (string.IsNullOrEmpty(databaseUrl)) {
+                throw new NotFoundException("Database Url is not found.");
+            }
             var databaseUri = new Uri(databaseUrl);
             var userInfo = databaseUri.UserInfo.Split(':');
 

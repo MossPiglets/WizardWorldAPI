@@ -22,7 +22,7 @@ namespace WizardWorldApi {
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services) {
             if (_env.IsProduction()) {
-                services.AddApplicationDbContext(ConnectionStringBuilder.Build());
+                services.AddApplicationDbContext(HerokuConnectingString.Get());
             }
             else {
                 services.AddApplicationDbContext(Configuration.GetConnectionString("DefaultConnection"));
