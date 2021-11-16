@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using MediatR.AspNet;
 using WizardWorld.Application;
 using WizardWorld.Persistance;
 
@@ -26,8 +27,9 @@ namespace WizardWorldApi {
             else {
                 services.AddApplicationDbContext(Configuration.GetConnectionString("DefaultConnection"));
             }
-            services.AddControllers();
-            services.AddAppAutoMapper();
+
+            services.AddApplication();
+            services.AddControllers(o => o.Filters.AddMediatrExceptions());
             services.AddSwaggerGen(c => {
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "WizardWorldApi", Version = "v1"});
             });
@@ -35,7 +37,6 @@ namespace WizardWorldApi {
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
-            
             app.UseDeveloperExceptionPage();
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WizardWorldApi v1"));
