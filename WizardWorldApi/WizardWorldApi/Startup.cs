@@ -1,17 +1,9 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
+using MediatR.AspNet;
 using WizardWorld.Application;
 using WizardWorld.Persistance;
 
@@ -27,10 +19,11 @@ namespace WizardWorldApi {
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services) {
             services.AddApplicationDbContext(Configuration.GetConnectionString("DefaultConnection"));
-            services.AddControllers();
-            services.AddAppAutoMapper();
-            services.AddSwaggerGen(c => {
-                c.SwaggerDoc("v1", new OpenApiInfo {Title = "WizardWorldApi", Version = "v1"});
+            services.AddApplication();
+            services.AddControllers(o => o.Filters.AddMediatrExceptions());
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "WizardWorldApi", Version = "v1" });
             });
         }
 
