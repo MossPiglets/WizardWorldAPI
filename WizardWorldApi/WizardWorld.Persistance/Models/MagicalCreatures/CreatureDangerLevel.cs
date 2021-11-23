@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace WizardWorld.Persistance.Models.MagicalCreatures {
-    class Class1 {
+﻿namespace WizardWorld.Persistance.Models.MagicalCreatures {
+    public enum CreatureDangerLevel {
+        // X, XX, XXX, XXXX, XXXXX
+        None = 0
     }
 }
