@@ -1,5 +1,6 @@
 ﻿namespace WizardWorld.Persistance.Models.Spells {
     public enum SpellType {
-        None = 0
+        None = 0,
+        Charm = 1
     }
 }
