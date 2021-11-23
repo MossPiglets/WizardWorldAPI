@@ -23,6 +23,7 @@ namespace WizardWorldApi.Tests.Unit {
 			var spellFaker = new Faker<Spell>()
 			                .RuleFor(a => a.Id, f => Guid.NewGuid())
 			                .RuleFor(a => a.Name, f => f.Lorem.Sentence())
+			                .RuleFor(a => a.Incantation, f => f.Lorem.Sentence())
 			                .RuleFor(a => a.Creator, f => f.Name.FullName())
 			                .RuleFor(a => a.Effect, f => f.Lorem.Sentence())
 			                .RuleFor(a => a.CanBeVerbal, f => f.Random.Bool())
@@ -36,6 +37,7 @@ namespace WizardWorldApi.Tests.Unit {
 			// Assert
 			spellDto.Id.Should().Be(spell.Id);
 			spellDto.Name.Should().Be(spell.Name);
+			spellDto.Incantation.Should().Be(spell.Incantation);
 			spellDto.Creator.Should().Be(spell.Creator);
 			spellDto.Effect.Should().Be(spell.Effect);
 			spellDto.CanBeVerbal.Should().Be(spell.CanBeVerbal);
