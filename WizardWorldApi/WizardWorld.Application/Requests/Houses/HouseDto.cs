@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using WizardWorld.Persistance.Models.Houses;
 
-namespace WizardWorld.Persistance.Models.Houses {
-    public class House {
+namespace WizardWorld.Application.Requests.Houses {
+    class HouseDto {
 		public Guid Id { get; set; }
 		public string Name { get; set; }
 		public string HouseColours { get; set; }
