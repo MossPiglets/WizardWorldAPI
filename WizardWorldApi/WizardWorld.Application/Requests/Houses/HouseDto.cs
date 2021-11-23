@@ -12,7 +12,7 @@ namespace WizardWorld.Application.Requests.Houses {
 		public string Element { get; set; }
 		public string Ghost { get; set; }
 		public string CommonRoom { get; set; }
-		public ICollection<HouseHead> Heads { get; set; }
-		public ICollection<Trait> Traits { get; set; }
+		public ICollection<HouseHeadDto> Heads { get; set; }
+		public ICollection<TraitDto> Traits { get; set; }
 	}
 }
