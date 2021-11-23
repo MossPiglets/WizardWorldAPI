@@ -12,6 +12,7 @@ namespace WizardWorldApi.Tests.Integrations.Generators {
             var spellFaker = new Faker<Spell>()
                 .RuleFor(a => a.Id, f => Guid.NewGuid())
                 .RuleFor(a => a.Name, f => f.Random.Word())
+                .RuleFor(a => a.Incantation, f => f.Lorem.Sentence())
                 .RuleFor(a => a.Effect, f => f.Lorem.Sentence())
                 .RuleFor(a => a.CanBeVerbal, f => f.Random.Bool())
                 .RuleFor(a => a.Type, f => f.PickRandom<SpellType>())
