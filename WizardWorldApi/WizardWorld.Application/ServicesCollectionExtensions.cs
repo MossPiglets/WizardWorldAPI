@@ -9,7 +9,6 @@ namespace WizardWorld.Application {
         public static void AddApplication(this IServiceCollection serviceExtensions) {
             serviceExtensions.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             serviceExtensions.AddMediatR(typeof(GetSpellsQuery));
-            serviceExtensions.AddMediatR(typeof(GetHousesQuery));
         }
     }
 }

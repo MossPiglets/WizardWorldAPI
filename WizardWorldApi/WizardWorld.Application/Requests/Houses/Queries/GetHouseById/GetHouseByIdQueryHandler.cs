@@ -18,7 +18,9 @@ namespace WizardWorld.Application.Requests.Houses.Queries.GetHouseById {
 		}
 
 		public async Task<HouseDto> Handle(GetHouseByIdQuery request, CancellationToken cancellationToken) {
-			var houseEntity = await _context.Houses.FirstOrDefaultAsync(a => a.Id == request.Id, cancellationToken);
+			var houseEntity = await _context.Houses
+											.Include(h => h.Traits).Include(h => h.Heads)
+											.FirstOrDefaultAsync(a => a.Id == request.Id, cancellationToken);
 			if (houseEntity == null) {
 				throw new NotFoundException(typeof(House), request.Id.ToString());
 			}

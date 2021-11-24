@@ -19,7 +19,8 @@ namespace WizardWorld.Application.Requests.Houses.Queries.GetHouses {
 
 		public async Task<List<HouseDto>> Handle(GetHousesQuery request, CancellationToken cancellationToken) {
 			return await _context.Houses
-								 .Select(a => _mapper.Map<HouseDto>(a)).ToListAsync(cancellationToken);
+								.Include(h => h.Traits).Include(h => h.Heads)
+								.Select(a => _mapper.Map<HouseDto>(a)).ToListAsync(cancellationToken);
 		}
 	}
 }
