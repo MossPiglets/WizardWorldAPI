@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using WizardWorld.Persistance.Models.Houses;
 
 namespace WizardWorld.Application.Requests.Houses {
-    class HouseDto {
+    public class HouseDto {
 		public Guid Id { get; set; }
 		public string Name { get; set; }
 		public string HouseColours { get; set; }
