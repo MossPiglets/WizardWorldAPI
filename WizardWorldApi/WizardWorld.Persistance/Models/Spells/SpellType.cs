@@ -16,5 +16,7 @@
         CounterJinx = 13,
         CounterCharm = 14,
         Untransfiguration = 15,
+        BindingMagicalContract = 16,
+        Vanishment = 17
     }
 }

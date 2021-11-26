@@ -23,6 +23,7 @@
 		DarkRed = 20,
 		Turquoise = 21,
 		PsychedelicTransparentWave = 22,
-		BrightYellow = 23
+		BrightYellow = 23,
+		BlackSmoke = 24
 	}
 }
