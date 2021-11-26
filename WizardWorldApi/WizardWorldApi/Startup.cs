@@ -35,7 +35,8 @@ namespace WizardWorldApi {
                     options.SerializerSettings.Converters.Add(new StringEnumConverter());
             });
             services.AddSwaggerGen(c => {
-                c.SwaggerDoc("v1", new OpenApiInfo {Title = "WizardWorldApi", Version = "v1"});
+                c.SwaggerDoc("v1", new OpenApiInfo 
+                    {Title = "WizardWorldApi", Version = GetType().Assembly.GetName().Version.ToString(3)});
             });
             services.AddSwaggerGenNewtonsoftSupport();
         }
