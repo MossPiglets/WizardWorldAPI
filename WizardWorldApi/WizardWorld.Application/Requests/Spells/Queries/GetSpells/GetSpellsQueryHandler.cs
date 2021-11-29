@@ -4,10 +4,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using WizardWorld.Persistance;
-using WizardWorld.Persistance.Models.Spells;
 
 namespace WizardWorld.Application.Requests.Spells.Queries.GetSpells {
     public class GetSpellsQueryHandler : IRequestHandler<GetSpellsQuery, List<SpellDto>> {

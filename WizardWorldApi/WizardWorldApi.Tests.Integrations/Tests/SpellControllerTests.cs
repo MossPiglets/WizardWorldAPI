@@ -6,8 +6,10 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 using FluentAssertions;
+using Microsoft.AspNetCore.Mvc.Testing;
 using NUnit.Framework;
 using WizardWorld.Application.Requests.Spells;
+using WizardWorldApi.Tests.Integrations.Extensions;
 using WizardWorldApi.Tests.Integrations.Generators;
 
 namespace WizardWorldApi.Tests.Integrations.Tests {
@@ -26,17 +28,33 @@ namespace WizardWorldApi.Tests.Integrations.Tests {
         }
 
         [Test]
-        public async Task Get_ShouldReturnSpellsList() {
+        public async Task Get_NoParameters_ShouldReturnSpellsList() {
             // Arrange
             var expectedSpells = SpellsGenerator.Spells;
             // Act 
             var response = await _client.GetAsync("Spell");
             response.StatusCode.Should().Be(HttpStatusCode.OK);
-            var spells = await response.Content.ReadFromJsonAsync<List<SpellDto>>();
+            var spells = await response.Content.DeserializeAsync<List<SpellDto>>();
             // Assert
             spells.Should().NotBeEmpty();
             spells.Should().BeEquivalentTo(expectedSpells);
         }
+        
+        [Test]
+        public async Task Get_Name_ShouldReturnSpellsList() {
+            // Arrange
+            var expectedSpells = SpellsGenerator.Spells;
+            var expectedSpell = expectedSpells.First();
+            // Act 
+            var response = await _client.GetAsync($"Spell?Name={expectedSpell.Name}");
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
+            var spells = await response.Content.DeserializeAsync<List<SpellDto>>();
+            // Assert
+            spells.Should().NotBeEmpty();
+            spells.Should().HaveCount(1);
+            spells[0].Should().BeEquivalentTo(expectedSpell);
+        }
+        
         [Test]
         public async Task GetById_ShouldReturnSpell() {
             // Arrange
@@ -44,7 +62,7 @@ namespace WizardWorldApi.Tests.Integrations.Tests {
             // Act 
             var response = await _client.GetAsync($"Spell/{expectedSpell.Id}");
             response.StatusCode.Should().Be(HttpStatusCode.OK);
-            var spell = await response.Content.ReadFromJsonAsync<SpellDto>();
+            var spell = await response.Content.DeserializeAsync<SpellDto>();
             // Assert
             spell.Should().BeEquivalentTo(expectedSpell);
         }
