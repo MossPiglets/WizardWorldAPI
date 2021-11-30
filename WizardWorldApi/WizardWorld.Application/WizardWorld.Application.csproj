@@ -1,12 +1,15 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>998cfdc1-7fd3-4301-9e29-c91c0bf4f54d</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
-    <PackageReference Include="MediatR.AspNet" Version="0.1.0" />
+    <PackageReference Include="MediatR.AspNet" Version="1.3.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0" />
+    <PackageReference Include="SendGrid" Version="9.25.0" />
   </ItemGroup>
 
   <ItemGroup>
