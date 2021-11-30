@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using MediatR.AspNet;
+using Newtonsoft.Json.Converters;
 using WizardWorld.Application;
 using WizardWorld.Persistance;
 
@@ -29,10 +30,15 @@ namespace WizardWorldApi {
             }
 
             services.AddApplication();
-            services.AddControllers(o => o.Filters.AddMediatrExceptions());
-            services.AddSwaggerGen(c => {
-                c.SwaggerDoc("v1", new OpenApiInfo {Title = "WizardWorldApi", Version = "v1"});
+            services.AddControllers(o => o.Filters.AddMediatrExceptions())
+                .AddNewtonsoftJson(options => {
+                    options.SerializerSettings.Converters.Add(new StringEnumConverter());
             });
+            services.AddSwaggerGen(c => {
+                c.SwaggerDoc("v1", new OpenApiInfo 
+                    {Title = "WizardWorldApi", Version = GetType().Assembly.GetName().Version.ToString(3)});
+            });
+            services.AddSwaggerGenNewtonsoftSupport();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
