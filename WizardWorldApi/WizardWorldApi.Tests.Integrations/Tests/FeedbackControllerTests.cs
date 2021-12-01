@@ -1,6 +1,11 @@
-﻿using System.Net.Http;
+﻿using System.Net;
+using System.Net.Http;
+using System.Net.Http.Json;
 using System.Threading.Tasks;
+using FluentAssertions;
 using NUnit.Framework;
+using WizardWorldApi.Tests.Integrations.Data;
+using WizardWorldApi.Tests.Integrations.Generators;
 
 namespace WizardWorldApi.Tests.Integrations.Tests {
     public class FeedbackControllerTests {
@@ -18,12 +23,25 @@ namespace WizardWorldApi.Tests.Integrations.Tests {
         }
 
         [Test]
-        public async Task Post_ShouldReturnTask() {
+        public async Task Post_ShouldReturnResponse() {
             // Arrange
-            
-            // Act
-            
+            var sendFeedbackCommand = FeedbackGenerator.Generate();
+            EmailProviderMock.IsServiceAvailable = true;
+            //Act
+            var response = await _client.PostAsJsonAsync("Feedback", sendFeedbackCommand);
             // Assert
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
+            TestData.FeedbackEmails.Should().ContainEquivalentOf(sendFeedbackCommand);
+        }
+        [Test]
+        public async Task Post_ResponseIsNull_ShouldReturnBadGateaway() {
+            // Arrange
+            var sendFeedbackCommand = FeedbackGenerator.Generate();
+            EmailProviderMock.IsServiceAvailable = false;
+            //Act
+            var response = await _client.PostAsJsonAsync("Feedback", sendFeedbackCommand);
+            // Assert
+            response.StatusCode.Should().Be(HttpStatusCode.BadGateway);
         }
     }
 }

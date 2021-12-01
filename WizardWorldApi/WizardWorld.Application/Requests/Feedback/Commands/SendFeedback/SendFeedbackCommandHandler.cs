@@ -3,16 +3,15 @@ using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
 using MediatR.AspNet.Exceptions;
-using Microsoft.Extensions.Configuration;
 using WizardWorld.Application.Services.EmailProviders;
 
 namespace WizardWorld.Application.Requests.Feedback.Commands.SendFeedback {
     public class SendFeedbackCommandHandler : IRequestHandler<SendFeedbackCommand> {
         private readonly IMapper _mapper;
         private readonly IEmailProvider _provider;
-        public SendFeedbackCommandHandler(IConfiguration configuration, IMapper mapper) {
+        public SendFeedbackCommandHandler(IMapper mapper, IEmailProvider provider) {
             _mapper = mapper;
-            _provider = new SendGridEmailProvider(configuration);
+            _provider = provider;
         }
         public async Task<Unit> Handle(SendFeedbackCommand request, CancellationToken cancellationToken) {
             var response = await _provider.SendFeedbackEmailAsync(_mapper.Map<FeedbackEmail>(request));
