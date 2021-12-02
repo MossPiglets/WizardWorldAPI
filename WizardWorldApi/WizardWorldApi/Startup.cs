@@ -16,7 +16,6 @@ namespace WizardWorldApi {
             Configuration = configuration;
             _env = env;
         }
-
         public IConfiguration Configuration { get; }
         private IWebHostEnvironment _env { get; set; }
 
@@ -55,13 +54,13 @@ namespace WizardWorldApi {
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
-
-            app.UseCors(builder => 
+            app.UseCors(builder =>
                     builder
                             .AllowAnyOrigin()
                             .AllowAnyMethod()
                             .AllowAnyHeader());
+
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
 
             app.UseMvc();
         }
