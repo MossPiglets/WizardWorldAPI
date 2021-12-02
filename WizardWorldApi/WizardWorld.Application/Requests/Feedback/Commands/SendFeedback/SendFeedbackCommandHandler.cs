@@ -19,7 +19,7 @@ namespace WizardWorld.Application.Requests.Feedback.Commands.SendFeedback {
                 return Unit.Value;
             }
 
-            throw new ExternalServiceFailureException("Email service failed");
+            throw new EmailServiceFailureException("Email service failed");
         }
     }
 }

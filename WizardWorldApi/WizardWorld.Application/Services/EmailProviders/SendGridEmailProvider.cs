@@ -18,7 +18,7 @@ namespace WizardWorld.Application.Services.EmailProviders {
             sendGridMessage.SetTemplateId("d-076542fe980544379eaab2d7f251dec2");
             sendGridMessage.SetTemplateData(new
             {
-                type = feedbackEmail.FeedbackType,
+                type = feedbackEmail.FeedbackType.ToString(),
                 id = feedbackEmail.EntityId,
                 feedback = feedbackEmail.Feedback
             });
