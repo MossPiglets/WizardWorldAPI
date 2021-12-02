@@ -1,11 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace WizardWorld.Persistance.Migrations
-{
-    public partial class SpellIncantation : Migration
-    {
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
+namespace WizardWorld.Persistance.Migrations {
+    public partial class SpellIncantation : Migration {
+        protected override void Up(MigrationBuilder migrationBuilder) {
             migrationBuilder.AddColumn<string>(
                 name: "Incantation",
                 table: "Spells",
@@ -13,8 +10,7 @@ namespace WizardWorld.Persistance.Migrations
                 nullable: true);
         }
 
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
+        protected override void Down(MigrationBuilder migrationBuilder) {
             migrationBuilder.DropColumn(
                 name: "Incantation",
                 table: "Spells");

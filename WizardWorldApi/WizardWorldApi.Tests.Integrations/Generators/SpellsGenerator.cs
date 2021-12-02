@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections;
+﻿using Bogus;
+using System;
 using System.Collections.Generic;
-using Bogus;
 using WizardWorld.Persistance.Models.Spells;
 
 namespace WizardWorldApi.Tests.Integrations.Generators {

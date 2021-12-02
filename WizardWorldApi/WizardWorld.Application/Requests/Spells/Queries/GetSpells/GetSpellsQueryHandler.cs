@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using AutoMapper;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using AutoMapper;
-using MediatR;
-using Microsoft.EntityFrameworkCore;
 using WizardWorld.Persistance;
 
 namespace WizardWorld.Application.Requests.Spells.Queries.GetSpells {

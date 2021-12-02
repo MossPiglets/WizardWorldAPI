@@ -1,10 +1,10 @@
+using MediatR.AspNet;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using MediatR.AspNet;
 using Newtonsoft.Json.Converters;
 using WizardWorld.Application;
 using WizardWorld.Persistance;
@@ -24,8 +24,7 @@ namespace WizardWorldApi {
         public void ConfigureServices(IServiceCollection services) {
             if (_env.IsProduction()) {
                 services.AddApplicationDbContext(HerokuConnectingString.Get());
-            }
-            else {
+            } else {
                 services.AddApplicationDbContext(Configuration.GetConnectionString("DefaultConnection"));
             }
 
@@ -33,10 +32,9 @@ namespace WizardWorldApi {
             services.AddControllers(o => o.Filters.AddMediatrExceptions())
                 .AddNewtonsoftJson(options => {
                     options.SerializerSettings.Converters.Add(new StringEnumConverter());
-            });
+                });
             services.AddSwaggerGen(c => {
-                c.SwaggerDoc("v1", new OpenApiInfo 
-                    {Title = "WizardWorldApi", Version = GetType().Assembly.GetName().Version.ToString(3)});
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "WizardWorldApi", Version = GetType().Assembly.GetName().Version.ToString(3) });
             });
             services.AddSwaggerGenNewtonsoftSupport();
         }

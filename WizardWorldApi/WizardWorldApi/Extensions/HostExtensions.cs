@@ -1,8 +1,8 @@
-﻿using System.Linq;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using System.Linq;
 using WizardWorld.Persistance;
 
 namespace WizardWorldApi.Extensions {
@@ -15,8 +15,7 @@ namespace WizardWorldApi.Extensions {
                 logger.LogInformation("Migration started");
                 context.Database.Migrate();
                 logger.LogInformation("Migration finished");
-            }
-            else {
+            } else {
                 logger.LogInformation("Migration not needed");
             }
             return host;

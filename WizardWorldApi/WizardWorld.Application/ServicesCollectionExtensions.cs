@@ -1,8 +1,7 @@
-﻿using System;
+﻿using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using MediatR;
+using System;
 using WizardWorld.Application.Requests.Spells.Queries.GetSpells;
-using WizardWorld.Application.Requests.Houses.Queries.GetHouses;
 
 namespace WizardWorld.Application {
     public static class ServicesCollectionExtensions {

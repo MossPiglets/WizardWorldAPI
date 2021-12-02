@@ -1,11 +1,11 @@
-﻿using System;
+﻿using FluentAssertions;
+using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using FluentAssertions;
-using NUnit.Framework;
 using WizardWorld.Application.Requests.Spells;
 using WizardWorldApi.Tests.Integrations.Extensions;
 using WizardWorldApi.Tests.Integrations.Generators;
