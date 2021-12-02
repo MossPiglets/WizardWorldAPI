@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using WizardWorld.Application.Services.EmailProviders;
 using WizardWorld.Persistance;
 
 namespace WizardWorldApi.Tests.Integrations {
@@ -20,7 +21,7 @@ namespace WizardWorldApi.Tests.Integrations {
 
                 services.AddDbContext<ApplicationDbContext>(o => 
                     o.UseInMemoryDatabase(databaseName));
-
+                services.AddScoped<IEmailProvider, EmailProviderMock>();
                 var provider = services.BuildServiceProvider();
                 using var scope = provider.CreateScope();
                 var scopeProvider = scope.ServiceProvider;
