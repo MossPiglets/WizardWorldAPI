@@ -8,7 +8,7 @@ using MediatR.AspNet;
 using Newtonsoft.Json.Converters;
 using WizardWorld.Application;
 using WizardWorld.Persistance;
-
+using Microsoft.AspNetCore.Mvc;
 
 namespace WizardWorldApi {
     public class Startup {
@@ -39,6 +39,8 @@ namespace WizardWorldApi {
                     {Title = "WizardWorldApi", Version = GetType().Assembly.GetName().Version.ToString(3)});
             });
             services.AddSwaggerGenNewtonsoftSupport();
+            services.AddCors();
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Latest);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +56,14 @@ namespace WizardWorldApi {
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+
+            app.UseCors(builder => 
+                    builder
+                            .AllowAnyOrigin()
+                            .AllowAnyMethod()
+                            .AllowAnyHeader());
+
+            app.UseMvc();
         }
     }
 }
