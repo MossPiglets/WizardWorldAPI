@@ -34,7 +34,6 @@ namespace WizardWorldApi.Tests.Unit {
             // Act
             var spellDto = _mapper.Map<SpellDto>(spell);
 
-
             // Assert
             spellDto.Id.Should().Be(spell.Id);
             spellDto.Name.Should().Be(spell.Name);
