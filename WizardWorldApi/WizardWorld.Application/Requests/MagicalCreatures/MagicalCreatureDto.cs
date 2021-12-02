@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using WizardWorld.Persistance.Models.MagicalCreatures;
 
 namespace WizardWorld.Application.Requests.MagicalCreatures {
-    class MagicalCreatureDto {
+    public class MagicalCreatureDto {
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
