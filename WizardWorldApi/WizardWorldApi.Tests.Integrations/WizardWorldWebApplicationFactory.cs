@@ -2,12 +2,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-<<<<<<< HEAD
 using System;
 using System.Linq;
-=======
 using WizardWorld.Application.Services.EmailProviders;
->>>>>>> c425bb21f65b5497a5866c4f2f709cb2be6e03df
 using WizardWorld.Persistance;
 
 namespace WizardWorldApi.Tests.Integrations {

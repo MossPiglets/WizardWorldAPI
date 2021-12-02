@@ -7,7 +7,6 @@ using WizardWorld.Application.Requests.Spells;
 using WizardWorld.Persistance.Models.Spells;
 
 namespace WizardWorldApi.Tests.Unit {
-<<<<<<< HEAD
     public class SpellMappingTests {
         private static IMapper _mapper;
         public SpellMappingTests() {
@@ -34,18 +33,7 @@ namespace WizardWorldApi.Tests.Unit {
 
             // Act
             var spellDto = _mapper.Map<SpellDto>(spell);
-=======
-	public class SpellMappingTests {
-		private static IMapper _mapper;
-		public SpellMappingTests() {
-			if (_mapper == null) {
-				var mappingConfig = new MapperConfiguration(mc 
-					=> { mc.AddProfile(new SpellMappingProfile()); });
-				IMapper mapper = mappingConfig.CreateMapper();
-				_mapper = mapper;
-			}
-		}
->>>>>>> c425bb21f65b5497a5866c4f2f709cb2be6e03df
+
 
             // Assert
             spellDto.Id.Should().Be(spell.Id);
