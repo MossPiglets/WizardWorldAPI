@@ -10,7 +10,7 @@ namespace WizardWorld.Application.Requests.MagicalCreatures {
         public CreatureClassificationByMinistryOfMagic Classification { get; set; }
         public CreatureStatus Status { get; set; }
         public CreatureDangerLevel DangerLevel { get; set; }
-        public ICollection<CreatureRelation> CreatureRelations { get; set; }
+        public ICollection<string> CreatureRelations { get; set; }
         public string NativeTo { get; set; }
     }
 }

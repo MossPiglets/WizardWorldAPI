@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Bogus" Version="33.1.1" />
     <PackageReference Include="FluentAssertions" Version="6.1.0" />
     <PackageReference Include="NUnit" Version="3.12.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.16.1" />
@@ -16,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\WizardWorld.Application\WizardWorld.Application.csproj" />
+    <ProjectReference Include="..\WizardWorldApi.Tests.Shared\WizardWorldApi.Tests.Shared.csproj" />
   </ItemGroup>
 
 </Project>

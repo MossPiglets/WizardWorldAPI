@@ -1,5 +1,5 @@
 ﻿using WizardWorld.Persistance;
-using WizardWorldApi.Tests.Integrations.Generators;
+using WizardWorldApi.Tests.Shared.Generators;
 
 namespace WizardWorldApi.Tests.Integrations {
     public static class Seeder {

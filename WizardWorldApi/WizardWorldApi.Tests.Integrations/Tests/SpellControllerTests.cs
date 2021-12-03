@@ -8,7 +8,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using WizardWorld.Application.Requests.Spells;
 using WizardWorldApi.Tests.Integrations.Extensions;
-using WizardWorldApi.Tests.Integrations.Generators;
+using WizardWorldApi.Tests.Shared.Generators;
 
 namespace WizardWorldApi.Tests.Integrations.Tests {
     public class SpellControllerTests {

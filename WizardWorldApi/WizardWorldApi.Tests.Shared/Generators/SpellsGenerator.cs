@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using WizardWorld.Persistance.Models.Spells;
 
-namespace WizardWorldApi.Tests.Integrations.Generators {
+namespace WizardWorldApi.Tests.Shared.Generators {
     public static class SpellsGenerator {
         public static IEnumerable<Spell> Spells { get; set; }
 

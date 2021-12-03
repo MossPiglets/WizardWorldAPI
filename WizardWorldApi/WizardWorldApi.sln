@@ -3,17 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WizardWorldApi", "WizardWorldApi\WizardWorldApi.csproj", "{3F84B75A-DED6-485D-A57F-12BCFE5892CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WizardWorldApi", "WizardWorldApi\WizardWorldApi.csproj", "{3F84B75A-DED6-485D-A57F-12BCFE5892CE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{EBCAF785-F832-4C34-86AA-73A6FD9DB54D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WizardWorldApi.Tests.Unit", "WizardWorldApi.Tests.Unit\WizardWorldApi.Tests.Unit.csproj", "{07C71F9D-4308-41DD-ADC1-01BA06A60612}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WizardWorldApi.Tests.Unit", "WizardWorldApi.Tests.Unit\WizardWorldApi.Tests.Unit.csproj", "{07C71F9D-4308-41DD-ADC1-01BA06A60612}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WizardWorldApi.Tests.Integrations", "WizardWorldApi.Tests.Integrations\WizardWorldApi.Tests.Integrations.csproj", "{D243A4EB-791F-4FFE-BEDA-AE3A899D36CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WizardWorldApi.Tests.Integrations", "WizardWorldApi.Tests.Integrations\WizardWorldApi.Tests.Integrations.csproj", "{D243A4EB-791F-4FFE-BEDA-AE3A899D36CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WizardWorld.Application", "WizardWorld.Application\WizardWorld.Application.csproj", "{A6EFCB40-1874-40A4-A115-78F9E280F4C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WizardWorld.Application", "WizardWorld.Application\WizardWorld.Application.csproj", "{A6EFCB40-1874-40A4-A115-78F9E280F4C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WizardWorld.Persistance", "WizardWorld.Persistance\WizardWorld.Persistance.csproj", "{45ED145C-DA47-44F2-B3ED-EBBA49AC6D32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WizardWorld.Persistance", "WizardWorld.Persistance\WizardWorld.Persistance.csproj", "{45ED145C-DA47-44F2-B3ED-EBBA49AC6D32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WizardWorldApi.Tests.Shared", "WizardWorldApi.Tests.Shared\WizardWorldApi.Tests.Shared.csproj", "{0A9CC615-78EE-4CC6-88C4-C5417FCBE7FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		{45ED145C-DA47-44F2-B3ED-EBBA49AC6D32}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45ED145C-DA47-44F2-B3ED-EBBA49AC6D32}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45ED145C-DA47-44F2-B3ED-EBBA49AC6D32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A9CC615-78EE-4CC6-88C4-C5417FCBE7FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A9CC615-78EE-4CC6-88C4-C5417FCBE7FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A9CC615-78EE-4CC6-88C4-C5417FCBE7FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A9CC615-78EE-4CC6-88C4-C5417FCBE7FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +54,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{07C71F9D-4308-41DD-ADC1-01BA06A60612} = {EBCAF785-F832-4C34-86AA-73A6FD9DB54D}
 		{D243A4EB-791F-4FFE-BEDA-AE3A899D36CD} = {EBCAF785-F832-4C34-86AA-73A6FD9DB54D}
+		{0A9CC615-78EE-4CC6-88C4-C5417FCBE7FB} = {EBCAF785-F832-4C34-86AA-73A6FD9DB54D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EB14AD80-2254-4914-A568-EFF822D80BA6}

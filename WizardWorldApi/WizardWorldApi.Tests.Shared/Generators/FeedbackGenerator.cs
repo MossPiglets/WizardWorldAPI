@@ -3,7 +3,7 @@ using Bogus;
 using WizardWorld.Application.Requests.Feedback;
 using WizardWorld.Application.Requests.Feedback.Commands.SendFeedback;
 
-namespace WizardWorldApi.Tests.Integrations.Generators {
+namespace WizardWorldApi.Tests.Shared.Generators {
     public static class FeedbackGenerator {
         public static SendFeedbackCommand Generate() {
             return new Faker<SendFeedbackCommand>()

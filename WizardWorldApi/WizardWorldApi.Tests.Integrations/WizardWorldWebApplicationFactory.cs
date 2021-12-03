@@ -18,7 +18,7 @@ namespace WizardWorldApi.Tests.Integrations {
                 var databaseName = Guid.NewGuid().ToString();
 
                 services.AddDbContext<ApplicationDbContext>(o =>
-                    o.UseInMemoryDatabase(databaseName));
+                    o.UseInMemoryDatabase(databaseName).EnableSensitiveDataLogging());
                 services.AddScoped<IEmailProvider, EmailProviderMock>();
                 var provider = services.BuildServiceProvider();
                 using var scope = provider.CreateScope();
