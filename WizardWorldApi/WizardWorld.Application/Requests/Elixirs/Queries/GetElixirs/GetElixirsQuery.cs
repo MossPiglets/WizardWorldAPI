@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using MediatR.AspNet;
 using WizardWorld.Persistance.Models.Elixirs;
+using WizardWorld.Persistance.Models.Ingredients;
 using WizardWorld.Persistance.Models.Wizards;
 
 namespace WizardWorld.Application.Requests.Elixirs.Queries.GetElixirs {

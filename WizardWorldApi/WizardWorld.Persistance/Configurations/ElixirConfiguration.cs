@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using WizardWorld.Persistance.Models.Elixirs;
 
-namespace WizardWorld.Persistance.Configurations.Elixirs {
+namespace WizardWorld.Persistance.Configurations {
     public class ElixirConfiguration : IEntityTypeConfiguration<Elixir> {
         public void Configure(EntityTypeBuilder<Elixir> builder) {
             builder

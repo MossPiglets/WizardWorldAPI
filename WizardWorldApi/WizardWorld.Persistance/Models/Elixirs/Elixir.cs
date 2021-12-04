@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using WizardWorld.Persistance.Models.Ingredients;
 using WizardWorld.Persistance.Models.Wizards;
 
 namespace WizardWorld.Persistance.Models.Elixirs {
