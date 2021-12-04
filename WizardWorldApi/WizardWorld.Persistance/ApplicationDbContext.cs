@@ -11,7 +11,7 @@ namespace WizardWorld.Persistance {
         public DbSet<House> Houses { get; set; }
         public DbSet<Elixir> Elixirs { get; set; }
         public DbSet<Wizard> Wizards { get; set; }
-        public DbSet<Ingredient> Type { get; set; }
+        public DbSet<Ingredient> Ingredients { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
