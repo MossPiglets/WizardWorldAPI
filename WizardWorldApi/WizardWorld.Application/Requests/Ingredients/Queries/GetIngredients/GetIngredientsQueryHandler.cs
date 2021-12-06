@@ -6,7 +6,6 @@ using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using WizardWorld.Persistance;
-using WizardWorld.Persistance.Models.Ingredients;
 
 namespace WizardWorld.Application.Requests.Ingredients.Queries.GetIngredients {
     public class GetIngredientsQueryHandler : IRequestHandler<GetIngredientsQuery, List<IngredientDto>> {
@@ -21,12 +20,8 @@ namespace WizardWorld.Application.Requests.Ingredients.Queries.GetIngredients {
         public async Task<List<IngredientDto>> Handle(GetIngredientsQuery request, CancellationToken cancellationToken) {
             return await _context.Ingredients
                 .Include(a => a.Elixirs)
-                .Where(a => IsNameStartsWith(request.Name, a))
+                .Where(a => (string.IsNullOrEmpty(request.Name) || a.Name.StartsWith(request.Name)))
                 .Select(a => _mapper.Map<IngredientDto>(a)).ToListAsync(cancellationToken);
-        }
-
-        private static bool IsNameStartsWith(string name, Ingredient a) {
-            return (string.IsNullOrEmpty(name) || a.Name.StartsWith(name));
         }
     }
 }

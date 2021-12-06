@@ -6,7 +6,6 @@ using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using WizardWorld.Persistance;
-using WizardWorld.Persistance.Models.Wizards;
 
 namespace WizardWorld.Application.Requests.Wizards.Queries.GetWizards {
     public class GetWizardsQueryHandler : IRequestHandler<GetWizardsQuery, List<WizardDto>> {
@@ -17,20 +16,13 @@ namespace WizardWorld.Application.Requests.Wizards.Queries.GetWizards {
             _context = context;
             _mapper = mapper;
         }
+
         public async Task<List<WizardDto>> Handle(GetWizardsQuery request, CancellationToken cancellationToken) {
             return await _context.Wizards
                 .Include(a => a.Elixirs)
-                .Where(a => IsFirstNameStartsWith(request.FirstName, a)
-                            && IsLastNameStartsWith(request.LastName, a))
+                .Where(a => (string.IsNullOrEmpty(request.FirstName) || a.FirstName.StartsWith(request.FirstName))
+                            && (string.IsNullOrEmpty(request.LastName) || a.LastName.StartsWith(request.LastName)))
                 .Select(a => _mapper.Map<WizardDto>(a)).ToListAsync(cancellationToken);
-        }
-
-        private static bool IsLastNameStartsWith(string lastName, Wizard a) {
-            return (string.IsNullOrEmpty(lastName) || a.LastName.StartsWith(lastName));
-        }
-
-        private static bool IsFirstNameStartsWith(string firstName, Wizard a) {
-            return (string.IsNullOrEmpty(firstName) || a.FirstName.StartsWith(firstName));
         }
     }
 }

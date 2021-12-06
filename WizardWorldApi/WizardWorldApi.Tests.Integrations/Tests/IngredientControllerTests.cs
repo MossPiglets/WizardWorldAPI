@@ -22,6 +22,7 @@ namespace WizardWorldApi.Tests.Integrations.Tests {
         public void CleanUp() {
             _client.Dispose();
         }
+
         [Test]
         public async Task Get_NoQueryParameters_ShouldReturnIngredientsList() {
             // Arrange
@@ -32,7 +33,8 @@ namespace WizardWorldApi.Tests.Integrations.Tests {
             var ingredients = await response.Content.DeserializeAsync<List<IngredientDto>>();
             // Assert
             ingredients.Should().NotBeEmpty();
-            ingredients.Should().BeEquivalentTo(expectedIngredients);
+            ingredients.Should()
+                .BeEquivalentTo(expectedIngredients, o => o.Excluding(i => i.Elixirs));
         }
     }
 }
