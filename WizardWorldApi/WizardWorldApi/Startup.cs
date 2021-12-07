@@ -29,6 +29,9 @@ namespace WizardWorldApi {
             }
 
             services.AddApplication();
+
+            services.AddCors();
+
             services.AddControllers(o => o.Filters.AddMediatrExceptions())
                 .AddNewtonsoftJson(options => {
                     options.SerializerSettings.Converters.Add(new StringEnumConverter());
@@ -38,8 +41,6 @@ namespace WizardWorldApi {
                     {Title = "WizardWorldApi", Version = GetType().Assembly.GetName().Version.ToString(3)});
             });
             services.AddSwaggerGenNewtonsoftSupport();
-            services.AddCors();
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Latest);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,8 +62,6 @@ namespace WizardWorldApi {
                             .AllowAnyHeader());
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
-
-            app.UseMvc();
         }
     }
 }
