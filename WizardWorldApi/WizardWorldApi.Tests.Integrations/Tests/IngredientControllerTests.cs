@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -35,6 +37,47 @@ namespace WizardWorldApi.Tests.Integrations.Tests {
             ingredients.Should().NotBeEmpty();
             ingredients.Should()
                 .BeEquivalentTo(expectedIngredients, o => o.Excluding(i => i.Elixirs));
+        }
+
+        [Test]
+        public async Task Get_Name_ShouldReturnIngredientsList() {
+            // Arrange
+            var expectedIngredients = IngredientsGenerator.Ingredients;
+            var expectedIngredient = expectedIngredients.First();
+            var query = new Dictionary<string, string> {
+                ["Name"] = expectedIngredient.Name
+            };
+            // Act 
+            var response = await _client.GetAsync("Ingredient", query);
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
+            var ingredients = await response.Content.DeserializeAsync<List<IngredientDto>>();
+            // Assert
+            ingredients.Should().NotBeEmpty();
+            ingredients.Where(a => a.Name.StartsWith(expectedIngredient.Name)).Should()
+                .ContainEquivalentOf(expectedIngredient, o => o.Excluding(i => i.Elixirs));
+        }
+
+        [Test]
+        public async Task GetById_ShouldReturnIngredient() {
+            // Arrange
+            var expectedIngredient = IngredientsGenerator.Ingredients.First();
+            // Act 
+            var response = await _client.GetAsync($"Ingredient/{expectedIngredient.Id}");
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
+            var ingredient = await response.Content.DeserializeAsync<IngredientDto>();
+            // Assert
+            ingredient.Should().BeEquivalentTo(expectedIngredient, 
+                o => o.Excluding(i => i.Elixirs));
+        }
+
+        [Test]
+        public async Task GetById_NotExistingId_ShouldReturnNotFound() {
+            // Arrange
+            var notExistingId = Guid.NewGuid();
+            // Act 
+            var response = await _client.GetAsync($"Ingredient/{notExistingId}");
+            // Assert
+            response.StatusCode.Should().Be(HttpStatusCode.NotFound);
         }
     }
 }

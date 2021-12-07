@@ -14,7 +14,7 @@ namespace WizardWorld.Application.Requests.Elixirs {
         public string Time { get; set; }
         public ElixirDifficulty Difficulty { get; set; }
         public ICollection<IngredientDto> Ingredients { get; set; }
-        public ICollection<WizardDto> Inventors { get; set; }
+        public ICollection<ElixirInventorDto> Inventors { get; set; }
         public string Manufacturer { get; set; }
     }
 }
