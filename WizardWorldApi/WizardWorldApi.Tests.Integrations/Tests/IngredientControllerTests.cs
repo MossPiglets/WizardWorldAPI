@@ -30,7 +30,7 @@ namespace WizardWorldApi.Tests.Integrations.Tests {
             // Arrange
             var expectedIngredients = IngredientsGenerator.Ingredients;
             // Act 
-            var response = await _client.GetAsync("Ingredient");
+            var response = await _client.GetAsync("Ingredients");
             response.StatusCode.Should().Be(HttpStatusCode.OK);
             var ingredients = await response.Content.DeserializeAsync<List<IngredientDto>>();
             // Assert
@@ -48,7 +48,7 @@ namespace WizardWorldApi.Tests.Integrations.Tests {
                 ["Name"] = expectedIngredient.Name
             };
             // Act 
-            var response = await _client.GetAsync("Ingredient", query);
+            var response = await _client.GetAsync("Ingredients", query);
             response.StatusCode.Should().Be(HttpStatusCode.OK);
             var ingredients = await response.Content.DeserializeAsync<List<IngredientDto>>();
             // Assert
@@ -62,7 +62,7 @@ namespace WizardWorldApi.Tests.Integrations.Tests {
             // Arrange
             var expectedIngredient = IngredientsGenerator.Ingredients.First();
             // Act 
-            var response = await _client.GetAsync($"Ingredient/{expectedIngredient.Id}");
+            var response = await _client.GetAsync($"Ingredients/{expectedIngredient.Id}");
             response.StatusCode.Should().Be(HttpStatusCode.OK);
             var ingredient = await response.Content.DeserializeAsync<IngredientDto>();
             // Assert
@@ -75,7 +75,7 @@ namespace WizardWorldApi.Tests.Integrations.Tests {
             // Arrange
             var notExistingId = Guid.NewGuid();
             // Act 
-            var response = await _client.GetAsync($"Ingredient/{notExistingId}");
+            var response = await _client.GetAsync($"Ingredients/{notExistingId}");
             // Assert
             response.StatusCode.Should().Be(HttpStatusCode.NotFound);
         }

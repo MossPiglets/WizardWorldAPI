@@ -26,8 +26,8 @@ namespace WizardWorld.Application.Requests.Elixirs.Queries.GetElixirs {
                                 a.Manufacturer.StartsWith(request.Manufacturer))
                             && (request.Difficulty == null || a.Difficulty == request.Difficulty)
                             && (string.IsNullOrEmpty(request.InventorFullName)
-                                || a.Inventors.Any(b => (b.FirstName.StartsWith(request.InventorFullName))
-                                                        || b.LastName.StartsWith(request.InventorFullName)))
+                                || a.Inventors.Any(b => (request.InventorFullName.Contains(b.FirstName))
+                                                        || request.InventorFullName.Contains(b.LastName)))
                             && (string.IsNullOrEmpty(request.Ingredient)
                                 || a.Ingredients.Any(b => b.Name.StartsWith(request.Ingredient))))
                 .Select(a => _mapper.Map<ElixirDto>(a)).ToListAsync(cancellationToken);

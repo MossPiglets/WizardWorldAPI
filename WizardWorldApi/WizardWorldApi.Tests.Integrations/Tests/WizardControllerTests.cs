@@ -6,7 +6,6 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using FluentAssertions;
 using NUnit.Framework;
-using WizardWorld.Application.Requests.Ingredients;
 using WizardWorld.Application.Requests.Wizards;
 using WizardWorldApi.Tests.Integrations.Extensions;
 using WizardWorldApi.Tests.Integrations.Generators;
@@ -31,7 +30,7 @@ namespace WizardWorldApi.Tests.Integrations.Tests {
             // Arrange
             var expectedWizard = WizardsGenerator.Wizards.First();
             // Act 
-            var response = await _client.GetAsync($"Wizard/{expectedWizard.Id}");
+            var response = await _client.GetAsync($"Wizards/{expectedWizard.Id}");
             response.StatusCode.Should().Be(HttpStatusCode.OK);
             var wizard = await response.Content.DeserializeAsync<WizardDto>();
             // Assert
@@ -44,7 +43,7 @@ namespace WizardWorldApi.Tests.Integrations.Tests {
             // Arrange
             var notExistingId = Guid.NewGuid();
             // Act 
-            var response = await _client.GetAsync($"Wizard/{notExistingId}");
+            var response = await _client.GetAsync($"Wizards/{notExistingId}");
             // Assert
             response.StatusCode.Should().Be(HttpStatusCode.NotFound);
         }
@@ -54,7 +53,7 @@ namespace WizardWorldApi.Tests.Integrations.Tests {
             // Arrange
             var expectedWizards = WizardsGenerator.Wizards;
             // Act 
-            var response = await _client.GetAsync("Wizard");
+            var response = await _client.GetAsync("Wizards");
             response.StatusCode.Should().Be(HttpStatusCode.OK);
             var wizards = await response.Content.DeserializeAsync<List<WizardDto>>();
             // Assert
@@ -72,7 +71,7 @@ namespace WizardWorldApi.Tests.Integrations.Tests {
                 ["FirstName"] = expectedWizard.FirstName
             };
             // Act 
-            var response = await _client.GetAsync("Wizard", query);
+            var response = await _client.GetAsync("Wizards", query);
             response.StatusCode.Should().Be(HttpStatusCode.OK);
             var wizards = await response.Content.DeserializeAsync<List<WizardDto>>();
             // Assert
@@ -90,7 +89,7 @@ namespace WizardWorldApi.Tests.Integrations.Tests {
                 ["LastName"] = expectedWizard.LastName
             };
             // Act 
-            var response = await _client.GetAsync("Wizard", query);
+            var response = await _client.GetAsync("Wizards", query);
             response.StatusCode.Should().Be(HttpStatusCode.OK);
             var wizards = await response.Content.DeserializeAsync<List<WizardDto>>();
             // Assert
@@ -109,7 +108,7 @@ namespace WizardWorldApi.Tests.Integrations.Tests {
                 ["LastName"] = expectedWizard.LastName
             };
             // Act 
-            var response = await _client.GetAsync("Wizard", query);
+            var response = await _client.GetAsync("Wizards", query);
             response.StatusCode.Should().Be(HttpStatusCode.OK);
             var wizards = await response.Content.DeserializeAsync<List<WizardDto>>();
             // Assert

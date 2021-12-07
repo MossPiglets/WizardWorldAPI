@@ -3,26 +3,28 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using WizardWorld.Application.Requests.Wizards;
-using WizardWorld.Application.Requests.Wizards.Queries.GetWizardById;
-using WizardWorld.Application.Requests.Wizards.Queries.GetWizards;
+using WizardWorld.Application.Requests.Spells;
+using WizardWorld.Application.Requests.Spells.Queries.GetSpellById;
+using WizardWorld.Application.Requests.Spells.Queries.GetSpells;
 
 namespace WizardWorldApi.Controllers {
     [ApiController]
     [Route("[controller]")]
-    public class WizardController : ControllerBase {
+    public class SpellsController : ControllerBase {
         private readonly IMediator _mediator;
-        public WizardController(IMediator mediator) {
+
+        public SpellsController(IMediator mediator) {
             _mediator = mediator;
         }
+
         [HttpGet]
-        public async Task<List<WizardDto>> Get([FromQuery] GetWizardsQuery query) {
+        public async Task<List<SpellDto>> Get([FromQuery] GetSpellsQuery query) {
             return await _mediator.Send(query);
         }
 
         [HttpGet("{id}")]
-        public async Task<WizardDto> GetById([FromRoute] Guid id) {
-            var query = new GetWizardByIdQuery() {
+        public async Task<SpellDto> GetById([FromRoute] Guid id) {
+            var query = new GetSpellByIdQuery {
                 Id = id
             };
             return await _mediator.Send(query);

@@ -10,10 +10,10 @@ using WizardWorld.Application.Requests.Ingredients.Queries.GetIngredients;
 namespace WizardWorldApi.Controllers {
     [ApiController]
     [Route("[controller]")]
-    public class IngredientController : ControllerBase {
+    public class IngredientsController : ControllerBase {
         private readonly IMediator _mediator;
 
-        public IngredientController(IMediator mediator) {
+        public IngredientsController(IMediator mediator) {
             _mediator = mediator;
         }
         [HttpGet]
