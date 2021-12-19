@@ -19,6 +19,7 @@ namespace WizardWorld.Application.Requests.Wizards.Queries.GetWizards {
 
         public async Task<List<WizardDto>> Handle(GetWizardsQuery request, CancellationToken cancellationToken) {
             return await _context.Wizards
+                .AsNoTracking()
                 .Include(a => a.Elixirs)
                 .Where(a => (string.IsNullOrEmpty(request.FirstName) || a.FirstName.StartsWith(request.FirstName))
                             && (string.IsNullOrEmpty(request.LastName) || a.LastName.StartsWith(request.LastName)))

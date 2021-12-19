@@ -19,6 +19,7 @@ namespace WizardWorld.Application.Requests.Ingredients.Queries.GetIngredientById
 
         public async Task<IngredientDto> Handle(GetIngredientByIdQuery request, CancellationToken cancellationToken) {
             var ingredientEntity  = await _context.Ingredients
+                .AsNoTracking()
                 .Include(a => a.Elixirs)
                 .FirstOrDefaultAsync(a => a.Id == request.Id, cancellationToken);
             if (ingredientEntity == null) {

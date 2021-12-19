@@ -21,6 +21,7 @@ namespace WizardWorld.Application.Requests.Wizards.Queries.GetWizardById {
 
         public async Task<WizardDto> Handle(GetWizardByIdQuery request, CancellationToken cancellationToken) {
             var spellEntity = await _context.Wizards
+                .AsNoTracking()
                 .Include(a => a.Elixirs)
                 .FirstOrDefaultAsync(a => a.Id == request.Id, cancellationToken);
             if (spellEntity == null) {
