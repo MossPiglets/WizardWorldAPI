@@ -14,8 +14,7 @@ namespace WizardWorldApi.Tests.Unit {
                 => {
                 mc.AddProfile(new SpellMappingProfile());
             });
-            IMapper mapper = mappingConfig.CreateMapper();
-            _mapper = mapper;
+            _mapper = mappingConfig.CreateMapper();
         }
 
         [Test]

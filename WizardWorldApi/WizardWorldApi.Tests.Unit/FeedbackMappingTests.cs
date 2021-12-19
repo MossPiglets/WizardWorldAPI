@@ -12,8 +12,7 @@ namespace WizardWorldApi.Tests.Unit {
         public FeedbackMappingTests() {
             var mappingConfig = new MapperConfiguration(mc 
                 => { mc.AddProfile(new FeedbackMappingProfile()); });
-            IMapper mapper = mappingConfig.CreateMapper();
-            _mapper = mapper;
+            _mapper = mappingConfig.CreateMapper();
         }
 
         [Test]
