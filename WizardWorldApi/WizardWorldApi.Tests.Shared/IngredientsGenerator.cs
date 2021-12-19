@@ -4,7 +4,7 @@ using Bogus;
 using WizardWorld.Persistance.Models.Elixirs;
 using WizardWorld.Persistance.Models.Ingredients;
 
-namespace WizardWorldApi.Tests.Integrations.Generators {
+namespace WizardWorldApi.Tests.Shared {
     public static class IngredientsGenerator {
         public static IEnumerable<Ingredient> Ingredients { get; set; }
 

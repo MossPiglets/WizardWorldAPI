@@ -8,7 +8,7 @@ using FluentAssertions;
 using NUnit.Framework;
 using WizardWorld.Application.Requests.Elixirs;
 using WizardWorldApi.Tests.Integrations.Extensions;
-using WizardWorldApi.Tests.Integrations.Generators;
+using WizardWorldApi.Tests.Shared;
 
 namespace WizardWorldApi.Tests.Integrations.Tests {
     public class ElixirControllerTests {

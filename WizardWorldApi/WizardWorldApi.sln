@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WizardWorld.Application", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WizardWorld.Persistance", "WizardWorld.Persistance\WizardWorld.Persistance.csproj", "{45ED145C-DA47-44F2-B3ED-EBBA49AC6D32}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WizardWorldApi.Tests.Shared", "WizardWorldApi.Tests.Shared\WizardWorldApi.Tests.Shared.csproj", "{758F36F9-0A7B-418A-803B-47BA669D6E8C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{45ED145C-DA47-44F2-B3ED-EBBA49AC6D32}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45ED145C-DA47-44F2-B3ED-EBBA49AC6D32}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45ED145C-DA47-44F2-B3ED-EBBA49AC6D32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{758F36F9-0A7B-418A-803B-47BA669D6E8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{758F36F9-0A7B-418A-803B-47BA669D6E8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{758F36F9-0A7B-418A-803B-47BA669D6E8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{758F36F9-0A7B-418A-803B-47BA669D6E8C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +54,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{07C71F9D-4308-41DD-ADC1-01BA06A60612} = {EBCAF785-F832-4C34-86AA-73A6FD9DB54D}
 		{D243A4EB-791F-4FFE-BEDA-AE3A899D36CD} = {EBCAF785-F832-4C34-86AA-73A6FD9DB54D}
+		{758F36F9-0A7B-418A-803B-47BA669D6E8C} = {EBCAF785-F832-4C34-86AA-73A6FD9DB54D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EB14AD80-2254-4914-A568-EFF822D80BA6}

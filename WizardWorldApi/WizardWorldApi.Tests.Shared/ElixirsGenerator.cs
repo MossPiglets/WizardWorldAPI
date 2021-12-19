@@ -5,7 +5,7 @@ using WizardWorld.Persistance.Models.Elixirs;
 using WizardWorld.Persistance.Models.Ingredients;
 using WizardWorld.Persistance.Models.Wizards;
 
-namespace WizardWorldApi.Tests.Integrations.Generators {
+namespace WizardWorldApi.Tests.Shared {
     public static class ElixirsGenerator {
         public static IEnumerable<Elixir> Elixirs { get; set; }
 

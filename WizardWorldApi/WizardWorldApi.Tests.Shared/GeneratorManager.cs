@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using WizardWorld.Persistance.Models.Elixirs;
 using WizardWorld.Persistance.Models.Ingredients;
 using WizardWorld.Persistance.Models.Wizards;
-using WizardWorldApi.Tests.Integrations.Extensions;
+using WizardWorldApi.Tests.Shared.Extensions;
 
-namespace WizardWorldApi.Tests.Integrations.Generators {
+namespace WizardWorldApi.Tests.Shared {
     public static class GeneratorManager {
         private static Random _random;
 
