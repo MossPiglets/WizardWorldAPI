@@ -6,15 +6,14 @@ using Microsoft.AspNetCore.Mvc;
 using WizardWorld.Application.Requests.Spells;
 using WizardWorld.Application.Requests.Spells.Queries.GetSpellById;
 using WizardWorld.Application.Requests.Spells.Queries.GetSpells;
-using WizardWorld.Persistance.Models.Spells;
 
 namespace WizardWorldApi.Controllers {
     [ApiController]
     [Route("[controller]")]
-    public class SpellController : ControllerBase {
+    public class SpellsController : ControllerBase {
         private readonly IMediator _mediator;
 
-        public SpellController(IMediator mediator) {
+        public SpellsController(IMediator mediator) {
             _mediator = mediator;
         }
 
