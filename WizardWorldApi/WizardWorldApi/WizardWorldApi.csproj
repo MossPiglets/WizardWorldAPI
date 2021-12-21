@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <AssemblyVersion>0.1.6</AssemblyVersion>
+    <AssemblyVersion>0.1.7</AssemblyVersion>
     <UserSecretsId>5f9a282b-65ee-4686-82fd-70dd8b71e1e5</UserSecretsId>
   </PropertyGroup>
 
