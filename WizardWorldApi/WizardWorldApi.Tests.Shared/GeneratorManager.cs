@@ -7,7 +7,7 @@ using WizardWorldApi.Tests.Shared.Extensions;
 
 namespace WizardWorldApi.Tests.Shared {
     public static class GeneratorManager {
-        private static Random _random;
+        private static Random _random = new Random();
 
         public static void Generate() {
             _random = new Random();
