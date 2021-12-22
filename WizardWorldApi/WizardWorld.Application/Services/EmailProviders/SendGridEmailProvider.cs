@@ -13,7 +13,7 @@ namespace WizardWorld.Application.Services.EmailProviders {
             var apiKey = _config.GetValue<string>("WizardWorldApiEmailKey");
             var sendGridClient = new SendGridClient(apiKey);
             var sendGridMessage = new SendGridMessage();
-            sendGridMessage.SetFrom("truemosspiglets@gmail.com", "MosPigletBot");
+            sendGridMessage.SetFrom("truemosspiglets@gmail.com", "MossPigletBot");
             sendGridMessage.AddTo("truemosspiglets@gmail.com");
             sendGridMessage.SetTemplateId("d-076542fe980544379eaab2d7f251dec2");
             sendGridMessage.SetTemplateData(new
