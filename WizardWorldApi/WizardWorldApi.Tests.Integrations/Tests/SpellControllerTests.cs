@@ -8,7 +8,7 @@ using FluentAssertions;
 using NUnit.Framework;
 using WizardWorld.Application.Requests.Spells;
 using WizardWorldApi.Tests.Integrations.Extensions;
-using WizardWorldApi.Tests.Integrations.Generators;
+using WizardWorldApi.Tests.Shared;
 
 namespace WizardWorldApi.Tests.Integrations.Tests {
     public class SpellControllerTests {
@@ -30,7 +30,7 @@ namespace WizardWorldApi.Tests.Integrations.Tests {
             // Arrange
             var expectedSpells = SpellsGenerator.Spells;
             // Act 
-            var response = await _client.GetAsync("Spell");
+            var response = await _client.GetAsync("Spells");
             response.StatusCode.Should().Be(HttpStatusCode.OK);
             var spells = await response.Content.DeserializeAsync<List<SpellDto>>();
             // Assert
@@ -47,7 +47,7 @@ namespace WizardWorldApi.Tests.Integrations.Tests {
                 ["Name"] = expectedSpell.Name
             };
             // Act 
-            var response = await _client.GetAsync($"Spell", query);
+            var response = await _client.GetAsync($"Spells", query);
             response.StatusCode.Should().Be(HttpStatusCode.OK);
             var spells = await response.Content.DeserializeAsync<List<SpellDto>>();
             // Assert
@@ -65,7 +65,7 @@ namespace WizardWorldApi.Tests.Integrations.Tests {
                 ["Incantation"] = expectedSpell.Incantation
             };
             // Act 
-            var response = await _client.GetAsync($"Spell", query);
+            var response = await _client.GetAsync($"Spells", query);
             response.StatusCode.Should().Be(HttpStatusCode.OK);
             var spells = await response.Content.DeserializeAsync<List<SpellDto>>();
             // Assert
@@ -83,7 +83,7 @@ namespace WizardWorldApi.Tests.Integrations.Tests {
                 ["Type"] = expectedSpell.Type.ToString(),
             };
             // Act 
-            var response = await _client.GetAsync($"Spell", query);
+            var response = await _client.GetAsync($"Spells", query);
             response.StatusCode.Should().Be(HttpStatusCode.OK);
             var spells = await response.Content.DeserializeAsync<List<SpellDto>>();
             // Assert
@@ -101,7 +101,7 @@ namespace WizardWorldApi.Tests.Integrations.Tests {
                 ["Type"] = expectedSpell.Type.ToString()
             };
             // Act 
-            var response = await _client.GetAsync($"Spell", query);
+            var response = await _client.GetAsync($"Spells", query);
             response.StatusCode.Should().Be(HttpStatusCode.OK);
             var spells = await response.Content.DeserializeAsync<List<SpellDto>>();
             // Assert
@@ -120,7 +120,7 @@ namespace WizardWorldApi.Tests.Integrations.Tests {
                 ["Incantation"] = expectedSpell.Incantation
             };
             // Act 
-            var response = await _client.GetAsync($"Spell", query);
+            var response = await _client.GetAsync($"Spells", query);
             response.StatusCode.Should().Be(HttpStatusCode.OK);
             var spells = await response.Content.DeserializeAsync<List<SpellDto>>();
             // Assert
@@ -140,7 +140,7 @@ namespace WizardWorldApi.Tests.Integrations.Tests {
                 ["Incantation"] = expectedSpell.Incantation
             };
             // Act 
-            var response = await _client.GetAsync("Spell", query);
+            var response = await _client.GetAsync("Spells", query);
             response.StatusCode.Should().Be(HttpStatusCode.OK);
             var spells = await response.Content.DeserializeAsync<List<SpellDto>>();
             // Assert
@@ -160,7 +160,7 @@ namespace WizardWorldApi.Tests.Integrations.Tests {
                 ["Incantation"] = expectedSpell.Incantation
             };
             // Act 
-            var response = await _client.GetAsync("Spell", query);
+            var response = await _client.GetAsync("Spells", query);
             response.StatusCode.Should().Be(HttpStatusCode.OK);
             var spells = await response.Content.DeserializeAsync<List<SpellDto>>();
             // Assert
@@ -175,7 +175,7 @@ namespace WizardWorldApi.Tests.Integrations.Tests {
             // Arrange
             var expectedSpell = SpellsGenerator.Spells.First();
             // Act 
-            var response = await _client.GetAsync($"Spell/{expectedSpell.Id}");
+            var response = await _client.GetAsync($"Spells/{expectedSpell.Id}");
             response.StatusCode.Should().Be(HttpStatusCode.OK);
             var spell = await response.Content.DeserializeAsync<SpellDto>();
             // Assert
@@ -187,7 +187,7 @@ namespace WizardWorldApi.Tests.Integrations.Tests {
             // Arrange
             var notExistingId = Guid.NewGuid();
             // Act 
-            var response = await _client.GetAsync($"Spell/{notExistingId}");
+            var response = await _client.GetAsync($"Spells/{notExistingId}");
             // Assert
             response.StatusCode.Should().Be(HttpStatusCode.NotFound);
         }

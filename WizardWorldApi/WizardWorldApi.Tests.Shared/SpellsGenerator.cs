@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using Bogus;
 using WizardWorld.Persistance.Models.Spells;
 
-namespace WizardWorldApi.Tests.Integrations.Generators {
+namespace WizardWorldApi.Tests.Shared {
     public static class SpellsGenerator {
         public static IEnumerable<Spell> Spells { get; set; }
 

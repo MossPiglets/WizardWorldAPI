@@ -19,6 +19,155 @@ namespace WizardWorld.Persistance.Migrations
                 .HasAnnotation("ProductVersion", "5.0.12")
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
+            modelBuilder.Entity("ElixirIngredient", b =>
+                {
+                    b.Property<Guid>("ElixirsId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("IngredientsId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("ElixirsId", "IngredientsId");
+
+                    b.HasIndex("IngredientsId");
+
+                    b.ToTable("ElixirsIngredients");
+                });
+
+            modelBuilder.Entity("ElixirWizard", b =>
+                {
+                    b.Property<Guid>("ElixirsId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("InventorsId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("ElixirsId", "InventorsId");
+
+                    b.HasIndex("InventorsId");
+
+                    b.ToTable("WizardsElixirs");
+                });
+
+            modelBuilder.Entity("WizardWorld.Persistance.Models.Elixirs.Elixir", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Characteristics")
+                        .HasColumnType("text");
+
+                    b.Property<int>("Difficulty")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Effect")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Manufacturer")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.Property<string>("SideEffects")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Time")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Elixirs");
+                });
+
+            modelBuilder.Entity("WizardWorld.Persistance.Models.Houses.House", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Animal")
+                        .HasColumnType("text");
+
+                    b.Property<string>("CommonRoom")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Element")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Founder")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ghost")
+                        .HasColumnType("text");
+
+                    b.Property<string>("HouseColours")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Houses");
+                });
+
+            modelBuilder.Entity("WizardWorld.Persistance.Models.Houses.HouseHead", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("HouseId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("HouseId");
+
+                    b.ToTable("HouseHead");
+                });
+
+            modelBuilder.Entity("WizardWorld.Persistance.Models.Houses.Trait", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("HouseId")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Name")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("HouseId");
+
+                    b.ToTable("Trait");
+                });
+
+            modelBuilder.Entity("WizardWorld.Persistance.Models.Ingredients.Ingredient", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Ingredients");
+                });
+
             modelBuilder.Entity("WizardWorld.Persistance.Models.Spells.Spell", b =>
                 {
                     b.Property<Guid>("Id")
@@ -49,6 +198,78 @@ namespace WizardWorld.Persistance.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Spells");
+                });
+
+            modelBuilder.Entity("WizardWorld.Persistance.Models.Wizards.Wizard", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Wizards");
+                });
+
+            modelBuilder.Entity("ElixirIngredient", b =>
+                {
+                    b.HasOne("WizardWorld.Persistance.Models.Elixirs.Elixir", null)
+                        .WithMany()
+                        .HasForeignKey("ElixirsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WizardWorld.Persistance.Models.Ingredients.Ingredient", null)
+                        .WithMany()
+                        .HasForeignKey("IngredientsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ElixirWizard", b =>
+                {
+                    b.HasOne("WizardWorld.Persistance.Models.Elixirs.Elixir", null)
+                        .WithMany()
+                        .HasForeignKey("ElixirsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WizardWorld.Persistance.Models.Wizards.Wizard", null)
+                        .WithMany()
+                        .HasForeignKey("InventorsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("WizardWorld.Persistance.Models.Houses.HouseHead", b =>
+                {
+                    b.HasOne("WizardWorld.Persistance.Models.Houses.House", null)
+                        .WithMany("Heads")
+                        .HasForeignKey("HouseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("WizardWorld.Persistance.Models.Houses.Trait", b =>
+                {
+                    b.HasOne("WizardWorld.Persistance.Models.Houses.House", null)
+                        .WithMany("Traits")
+                        .HasForeignKey("HouseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("WizardWorld.Persistance.Models.Houses.House", b =>
+                {
+                    b.Navigation("Heads");
+
+                    b.Navigation("Traits");
                 });
 #pragma warning restore 612, 618
         }

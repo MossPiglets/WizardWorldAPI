@@ -18,7 +18,9 @@ namespace WizardWorld.Application.Requests.Spells.Queries.GetSpellById {
 		}
 
 		public async Task<SpellDto> Handle(GetSpellByIdQuery request, CancellationToken cancellationToken) {
-			var spellEntity = await _context.Spells.FirstOrDefaultAsync(a => a.Id == request.Id, cancellationToken);
+			var spellEntity = await _context.Spells
+				.AsNoTracking()
+				.FirstOrDefaultAsync(a => a.Id == request.Id, cancellationToken);
 			if (spellEntity == null) {
 				throw new NotFoundException(typeof(Spell), request.Id.ToString());
 			}
