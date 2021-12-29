@@ -11,10 +11,10 @@ using WizardWorld.Persistance.Models.Houses;
 namespace WizardWorldApi.Controllers {
     [ApiController]
     [Route("[controller]")]
-    public class HouseController : ControllerBase {
+    public class HousesController : ControllerBase {
         private readonly IMediator _mediator;
 
-        public HouseController(IMediator mediator) {
+        public HousesController(IMediator mediator) {
             _mediator = mediator;
         }
 

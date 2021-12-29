@@ -35,7 +35,12 @@ namespace WizardWorldApi.Tests.Integrations.Tests {
             var house = await response.Content.DeserializeAsync<HouseDto>();
 
             // Assert
-            house.Should().BeEquivalentTo(expectedHouse);
+            house.Should().BeEquivalentTo(expectedHouse,
+            config => config.Excluding(o => o.Heads)
+                            .Excluding(o => o.Traits));
+            house.Heads.Should().BeEquivalentTo(expectedHouse.Heads, o => o.Excluding(s => s.HouseId));
+            house.Traits.Should().BeEquivalentTo(expectedHouse.Traits, o => o.Excluding(s => s.HouseId));
+
         }
 
         [Test]
