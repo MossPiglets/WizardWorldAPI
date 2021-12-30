@@ -55,10 +55,13 @@ namespace WizardWorldApi.Tests.Integrations.Tests {
 
             // Assert
             houses.Should().NotBeEmpty();
-            houses.Should().BeEquivalentTo(expectedHouses, o => o.Excluding(h => h.Traits)
-                                                                 .Excluding(h => h.Heads));
-            houses.Should().BeEquivalentTo(expectedHouses, o => o.Excluding(s => s.Heads.));
-            houses.Should().BeEquivalentTo(expectedHouses.Traits, o => o.Excluding(s => s.HouseId));
+            foreach (var house in houses) {
+                var expectedHouse = expectedHouses.Single(a => a.Id == house.Id);
+                house.Should().BeEquivalentTo(expectedHouse, o => o.Excluding(h => h.Heads)
+                                                               .Excluding(h => h.Traits));
+                house.Heads.Should().BeEquivalentTo(expectedHouse.Heads, o => o.Excluding(s => s.HouseId));
+                house.Traits.Should().BeEquivalentTo(expectedHouse.Traits, o => o.Excluding(s => s.HouseId));
+            }
         }
 
         [Test]
