@@ -35,9 +35,8 @@ namespace WizardWorldApi.Tests.Integrations.Tests {
             var house = await response.Content.DeserializeAsync<HouseDto>();
 
             // Assert
-            house.Should().BeEquivalentTo(expectedHouse,
-            config => config.Excluding(o => o.Heads)
-                            .Excluding(o => o.Traits));
+            house.Should().BeEquivalentTo(expectedHouse, o => o.Excluding(h => h.Heads)
+                                                               .Excluding(h => h.Traits));
             house.Heads.Should().BeEquivalentTo(expectedHouse.Heads, o => o.Excluding(s => s.HouseId));
             house.Traits.Should().BeEquivalentTo(expectedHouse.Traits, o => o.Excluding(s => s.HouseId));
 
@@ -56,7 +55,10 @@ namespace WizardWorldApi.Tests.Integrations.Tests {
 
             // Assert
             houses.Should().NotBeEmpty();
-            houses.Should().BeEquivalentTo(expectedHouses);
+            houses.Should().BeEquivalentTo(expectedHouses, o => o.Excluding(h => h.Traits)
+                                                                 .Excluding(h => h.Heads));
+            houses.Should().BeEquivalentTo(expectedHouses, o => o.Excluding(s => s.Heads.));
+            houses.Should().BeEquivalentTo(expectedHouses.Traits, o => o.Excluding(s => s.HouseId));
         }
 
         [Test]
