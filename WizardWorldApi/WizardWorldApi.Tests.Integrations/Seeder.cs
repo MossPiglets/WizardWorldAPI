@@ -9,6 +9,7 @@ namespace WizardWorldApi.Tests.Integrations {
             context.AddRange(IngredientsGenerator.Ingredients);
             context.AddRange(ElixirsGenerator.Elixirs);
             context.AddRange(WizardsGenerator.Wizards);
+            context.AddRange(HousesGenerator.Houses);
             context.SaveChanges();
         }
     }
