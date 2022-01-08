@@ -18,6 +18,9 @@ Data is based on [Harry Potter Wiki](https://harrypotter.fandom.com/wiki/Main_Pa
 - C# 9.0
 - .NET 5.0
 - ASP.NET 5.0
+- Entity Framework Core
+- MediatR
+- CQRS
 - Swagger
 - NUnit
 
