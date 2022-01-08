@@ -2,7 +2,6 @@
 
 API returning data from the Harry Potter universe. 
 
-Write in C# 9.0 and .NET 5.0. Fully tested in NUnit.
 
 -> [Swagger](https://wizard-world-api.herokuapp.com/swagger/index.html)
 
@@ -14,6 +13,13 @@ Write in C# 9.0 and .NET 5.0. Fully tested in NUnit.
 - Wizards
 
 Data is based on [Harry Potter Wiki](https://harrypotter.fandom.com/wiki/Main_Page).
+
+### Tech stack
+- C# 9.0
+- .NET 5.0
+- ASP.NET 5.0
+- Swagger
+- NUnit
 
 ### Development
 We are happy to accept suggestions for further development. Please feel free to add Issues or email us with feedback by Feedback endpoint :)
