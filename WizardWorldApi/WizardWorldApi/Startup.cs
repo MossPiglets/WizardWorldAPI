@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -16,6 +17,7 @@ namespace WizardWorldApi {
             Configuration = configuration;
             _env = env;
         }
+
         public IConfiguration Configuration { get; }
         private IWebHostEnvironment _env { get; set; }
 
@@ -35,10 +37,16 @@ namespace WizardWorldApi {
             services.AddControllers(o => o.Filters.AddMediatrExceptions())
                 .AddNewtonsoftJson(options => {
                     options.SerializerSettings.Converters.Add(new StringEnumConverter());
-            });
+                });
             services.AddSwaggerGen(c => {
-                c.SwaggerDoc("v1", new OpenApiInfo 
-                    {Title = "WizardWorldApi", Version = GetType().Assembly.GetName().Version.ToString(3)});
+                c.SwaggerDoc("v1", new OpenApiInfo {
+                    Title = "WizardWorldApi", 
+                    Version = GetType().Assembly.GetName().Version.ToString(3),
+                    Contact = new OpenApiContact {
+                        Name = "Github",
+                        Url = new Uri("https://github.com/MossPiglets/WizardWorldAPI")
+                    }
+                });
             });
             services.AddSwaggerGenNewtonsoftSupport();
         }
@@ -56,10 +64,10 @@ namespace WizardWorldApi {
             app.UseAuthorization();
 
             app.UseCors(builder =>
-                    builder
-                            .AllowAnyOrigin()
-                            .AllowAnyMethod()
-                            .AllowAnyHeader());
+                builder
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
