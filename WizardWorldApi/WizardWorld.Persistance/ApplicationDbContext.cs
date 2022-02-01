@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using WizardWorld.Persistance.Models.Counters;
 using WizardWorld.Persistance.Models.Elixirs;
 using WizardWorld.Persistance.Models.Houses;
 using WizardWorld.Persistance.Models.Ingredients;
@@ -12,6 +13,7 @@ namespace WizardWorld.Persistance {
         public DbSet<Elixir> Elixirs { get; set; }
         public DbSet<Wizard> Wizards { get; set; }
         public DbSet<Ingredient> Ingredients { get; set; }
+        public DbSet<Counter> Counters { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 

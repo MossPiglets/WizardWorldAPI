@@ -10,6 +10,7 @@ using Newtonsoft.Json.Converters;
 using WizardWorld.Application;
 using WizardWorld.Persistance;
 using Microsoft.AspNetCore.Mvc;
+using WizardWorldApi.Extensions;
 
 namespace WizardWorldApi {
     public class Startup {
@@ -53,6 +54,7 @@ namespace WizardWorldApi {
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
+            app.UseCounter();
             app.UseDeveloperExceptionPage();
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WizardWorldApi v1"));
