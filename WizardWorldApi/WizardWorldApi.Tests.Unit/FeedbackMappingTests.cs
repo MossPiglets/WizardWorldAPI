@@ -1,33 +1,24 @@
-﻿using System;
-using AutoMapper;
-using Bogus;
+﻿using AutoMapper;
 using FluentAssertions;
 using NUnit.Framework;
 using WizardWorld.Application.Requests.Feedback;
-using WizardWorld.Application.Requests.Feedback.Commands.SendFeedback;
 using WizardWorld.Application.Services.EmailProviders;
+using WizardWorldApi.Tests.Shared;
 
 namespace WizardWorldApi.Tests.Unit {
     public class FeedbackMappingTests {
         private static IMapper _mapper;
 
         public FeedbackMappingTests() {
-            if (_mapper == null) {
-                var mappingConfig = new MapperConfiguration(mc => 
-                    { mc.AddProfile(new FeedbackMappingProfile()); });
-                IMapper mapper = mappingConfig.CreateMapper();
-                _mapper = mapper;
-            }
+            var mappingConfig = new MapperConfiguration(mc 
+                => { mc.AddProfile(new FeedbackMappingProfile()); });
+            _mapper = mappingConfig.CreateMapper();
         }
 
         [Test]
         public void Map_SendFeedbackCommand_ShouldReturnFeedback() {
             // Arrange
-            var sendFeedbackCommandFaker = new Faker<SendFeedbackCommand>()
-                .RuleFor(a => a.FeedbackType, f => f.Random.Enum<FeedbackType>())
-                .RuleFor(a => a.Feedback, f => f.Lorem.Sentences(5))
-                .RuleFor(a => a.EntityId, f => Guid.NewGuid());
-            var sendFeedbackCommand = sendFeedbackCommandFaker.Generate();
+            var sendFeedbackCommand = FeedbackGenerator.Generate();
             // Act
             var feedbackEmail = _mapper.Map<FeedbackEmail>(sendFeedbackCommand);
             // Assert

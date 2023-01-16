@@ -1,35 +1,27 @@
+using System.Linq;
 using AutoMapper;
-using Bogus;
 using FluentAssertions;
 using NUnit.Framework;
 using System;
 using WizardWorld.Application.Requests.Spells;
-using WizardWorld.Persistance.Models.Spells;
+using WizardWorldApi.Tests.Shared;
 
 namespace WizardWorldApi.Tests.Unit {
     public class SpellMappingTests {
         private static IMapper _mapper;
+
         public SpellMappingTests() {
-            if (_mapper == null) {
-                var mappingConfig = new MapperConfiguration(mc => { mc.AddProfile(new SpellMappingProfile()); });
-                IMapper mapper = mappingConfig.CreateMapper();
-                _mapper = mapper;
-            }
+            var mappingConfig = new MapperConfiguration(mc
+                => {
+                mc.AddProfile(new SpellMappingProfile());
+            });
+            _mapper = mappingConfig.CreateMapper();
         }
 
         [Test]
         public void Map_Spell_ShouldReturnSpellDto() {
             // Arrange
-            var spellFaker = new Faker<Spell>()
-                            .RuleFor(a => a.Id, f => Guid.NewGuid())
-                            .RuleFor(a => a.Name, f => f.Lorem.Sentence())
-                            .RuleFor(a => a.Incantation, f => f.Lorem.Sentence())
-                            .RuleFor(a => a.Creator, f => f.Name.FullName())
-                            .RuleFor(a => a.Effect, f => f.Lorem.Sentence())
-                            .RuleFor(a => a.CanBeVerbal, f => f.Random.Bool())
-                            .RuleFor(a => a.Type, f => f.Random.Enum<SpellType>())
-                            .RuleFor(a => a.Light, f => f.Random.Enum<SpellLight>());
-            var spell = spellFaker.Generate();
+            var spell = SpellsGenerator.Spells.First();
 
             // Act
             var spellDto = _mapper.Map<SpellDto>(spell);

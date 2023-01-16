@@ -17,13 +17,15 @@ namespace WizardWorld.Application.Requests.Houses.Queries.GetHouseById {
             _mapper = mapper;
         }
 
-        public async Task<HouseDto> Handle(GetHouseByIdQuery request, CancellationToken cancellationToken) {
-            var houseEntity = await _context.Houses
-                                            .Include(h => h.Traits).Include(h => h.Heads)
-                                            .FirstOrDefaultAsync(a => a.Id == request.Id, cancellationToken);
-            if (houseEntity == null) {
-                throw new NotFoundException(typeof(House), request.Id.ToString());
-            }
+		public async Task<HouseDto> Handle(GetHouseByIdQuery request, CancellationToken cancellationToken) {
+			var houseEntity = await _context.Houses
+				.AsNoTracking()
+				.Include(h => h.Traits)
+				.Include(h => h.Heads)
+				.FirstOrDefaultAsync(a => a.Id == request.Id, cancellationToken);
+			if (houseEntity == null) {
+				throw new NotFoundException(typeof(House), request.Id.ToString());
+			}
 
             return _mapper.Map<HouseDto>(houseEntity);
         }

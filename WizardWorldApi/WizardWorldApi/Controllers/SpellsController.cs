@@ -10,10 +10,10 @@ using WizardWorld.Application.Requests.Spells.Queries.GetSpells;
 namespace WizardWorldApi.Controllers {
     [ApiController]
     [Route("[controller]")]
-    public class SpellController : ControllerBase {
+    public class SpellsController : ControllerBase {
         private readonly IMediator _mediator;
 
-        public SpellController(IMediator mediator) {
+        public SpellsController(IMediator mediator) {
             _mediator = mediator;
         }
 

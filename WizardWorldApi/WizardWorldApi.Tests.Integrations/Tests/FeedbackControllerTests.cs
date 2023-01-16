@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using NUnit.Framework;
 using WizardWorldApi.Tests.Integrations.Data;
-using WizardWorldApi.Tests.Shared.Generators;
+using WizardWorldApi.Tests.Shared;
 
 namespace WizardWorldApi.Tests.Integrations.Tests {
     public class FeedbackControllerTests {
