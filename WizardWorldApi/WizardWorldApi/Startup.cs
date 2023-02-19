@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using MediatR.AspNet;
 using Newtonsoft.Json.Converters;
 using WizardWorld.Application;
 using WizardWorld.Persistance;
@@ -25,7 +26,8 @@ namespace WizardWorldApi {
         public void ConfigureServices(IServiceCollection services) {
             if (_env.IsProduction()) {
                 services.AddApplicationDbContext(HerokuConnectingString.Get());
-            } else {
+            }
+            else {
                 services.AddApplicationDbContext(Configuration.GetConnectionString("DefaultConnection"));
             }
 
