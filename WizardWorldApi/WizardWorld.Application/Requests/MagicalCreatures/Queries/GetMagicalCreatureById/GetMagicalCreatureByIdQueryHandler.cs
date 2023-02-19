@@ -18,13 +18,13 @@ namespace WizardWorld.Application.Requests.MagicalCreatures.Queries.GetMagicalCr
         }
 
         public async Task<MagicalCreatureDto> Handle(GetMagicalCreatureByIdQuery request, CancellationToken cancellationToken) {
-            var magicalCreatuerEntity = await _context.MagicalCreatures.FirstOrDefaultAsync(a => a.Id == request.Id, cancellationToken); ;
+            var magicalCreatureEntity = await _context.MagicalCreatures.FirstOrDefaultAsync(a => a.Id == request.Id, cancellationToken); ;
 
-            if (magicalCreatuerEntity == null) {
+            if (magicalCreatureEntity == null) {
                 throw new NotFoundException(typeof(MagicalCreature), request.Id.ToString());
             }
 
-            return _mapper.Map<MagicalCreatureDto>(magicalCreatuerEntity);
+            return _mapper.Map<MagicalCreatureDto>(magicalCreatureEntity);
         }
     }
 }

@@ -5,6 +5,7 @@ namespace WizardWorld.Application.Requests.MagicalCreatures {
     public class MagicalCreatureMappingProfile : Profile {
         public MagicalCreatureMappingProfile() {
             CreateMap<MagicalCreature, MagicalCreatureDto>();
+            CreateMap<CreatureRelation, CreatureRelationDto>();
         }
     }
 }
