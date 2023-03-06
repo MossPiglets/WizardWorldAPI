@@ -21,6 +21,7 @@ namespace WizardWorldApi {
                 SslMode = SslMode.Require,
                 TrustServerCertificate = true
             };
+            
 
             return builder.ToString();
         }
