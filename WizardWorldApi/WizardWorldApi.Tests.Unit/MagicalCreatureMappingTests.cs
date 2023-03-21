@@ -35,7 +35,7 @@ namespace WizardWorldApi.Tests.Unit {
             magicalCreatureDto.Description.Should().Be(magicalCreature.Description);
             magicalCreatureDto.Classification.Should().Be(magicalCreature.Classification);
             magicalCreatureDto.Status.Should().Be(magicalCreature.Status);
-            magicalCreatureDto.DangerLevel.Should().Be(magicalCreature.DangerLevel);
+            magicalCreatureDto.DangerousnessLevel.Should().Be(magicalCreature.DangerousnessLevel);
             magicalCreatureDto.NativeTo.Should().Be(magicalCreature.NativeTo);
             magicalCreatureDto.CreatureRelations.Should().BeEquivalentTo(magicalCreature.CreatureRelations);
         }

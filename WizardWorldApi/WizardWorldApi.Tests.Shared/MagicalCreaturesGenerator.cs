@@ -17,7 +17,7 @@ namespace WizardWorldApi.Tests.Shared.Generators {
                 .RuleFor(a => a.Description, f => f.Lorem.Sentence())
                 .RuleFor(a => a.Classification, f => f.Random.Enum<CreatureClassificationByMinistryOfMagic>())
                 .RuleFor(a => a.Status, f => f.Random.Enum<CreatureStatus>())
-                .RuleFor(a => a.DangerLevel, f => f.Random.Enum<CreatureDangerLevel>())
+                .RuleFor(a => a.DangerousnessLevel, f => f.Random.Enum<CreatureDangerousnessLevel>())
                 .RuleFor(a => a.NativeTo, f => f.Lorem.Sentence())
                 .RuleFor(a => a.CreatureRelations, (f,c) => new Faker<CreatureRelation>()
                                                         .RuleFor(a => a.CreatureId, f => Guid.NewGuid())
