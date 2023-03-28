@@ -23,10 +23,6 @@ namespace WizardWorldApi.Tests.Shared {
                                                         .Generate(3));
 
             MagicalCreatures = magicalCreatureFaker.Generate(10);
-            //TODO
-            //znajdź takie magical creatures których jakakolwiek creature relation ma Id = c8b887c1-a26b-4dab-9fdf-92d319480935
-            //MagicalCreatures.Where(MagicalCreature => MagicalCreature.CreatureRelations.
-            
         }
     }
 }
