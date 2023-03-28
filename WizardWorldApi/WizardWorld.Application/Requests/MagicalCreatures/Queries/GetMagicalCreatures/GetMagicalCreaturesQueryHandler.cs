@@ -19,7 +19,8 @@ namespace WizardWorld.Application.Requests.MagicalCreatures.Queries.GetMagicalCr
 
         public async Task<List<MagicalCreatureDto>> Handle(GetMagicalCreaturesQuery request, CancellationToken cancellationToken) {
             return await _context.MagicalCreatures
-                                .Select(a => _mapper.Map<MagicalCreatureDto>(a)).ToListAsync(cancellationToken);
+                .Include(a=>a.CreatureRelations)
+                .Select(a => _mapper.Map<MagicalCreatureDto>(a)).ToListAsync(cancellationToken);
         }
     }
 }

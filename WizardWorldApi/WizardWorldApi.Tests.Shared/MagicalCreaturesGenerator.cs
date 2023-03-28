@@ -2,15 +2,13 @@
 using System;
 using System.Collections.Generic;
 using WizardWorld.Persistance.Models.MagicalCreatures;
-using System.Linq;
 
-namespace WizardWorldApi.Tests.Shared.Generators {
+namespace WizardWorldApi.Tests.Shared {
     public class MagicalCreaturesGenerator {
         public static IEnumerable<MagicalCreature> MagicalCreatures { get; set; }
 
         static MagicalCreaturesGenerator() {
             
-
             var magicalCreatureFaker = new Faker<MagicalCreature>()
                 .RuleFor(a => a.Id, f => Guid.NewGuid())
                 .RuleFor(a => a.Name, f => f.Lorem.Sentence())
@@ -20,14 +18,15 @@ namespace WizardWorldApi.Tests.Shared.Generators {
                 .RuleFor(a => a.DangerousnessLevel, f => f.Random.Enum<CreatureDangerousnessLevel>())
                 .RuleFor(a => a.NativeTo, f => f.Lorem.Sentence())
                 .RuleFor(a => a.CreatureRelations, (f,c) => new Faker<CreatureRelation>()
-                                                        .RuleFor(a => a.CreatureId, f => Guid.NewGuid())
-                                                        .RuleFor(a => a.RelatedCreatureId, f => c.Id)
+                                                        .RuleFor(a => a.CreatureId, f => c.Id)
+                                                        .RuleFor(a => a.RelatedCreatureId, f => Guid.NewGuid())
                                                         .Generate(3));
 
             MagicalCreatures = magicalCreatureFaker.Generate(10);
             //TODO
             //znajdź takie magical creatures których jakakolwiek creature relation ma Id = c8b887c1-a26b-4dab-9fdf-92d319480935
             //MagicalCreatures.Where(MagicalCreature => MagicalCreature.CreatureRelations.
+            
         }
     }
 }

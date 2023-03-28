@@ -2,7 +2,6 @@ using System.Linq;
 using AutoMapper;
 using FluentAssertions;
 using NUnit.Framework;
-using System;
 using WizardWorld.Application.Requests.Spells;
 using WizardWorldApi.Tests.Shared;
 

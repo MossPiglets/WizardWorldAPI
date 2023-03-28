@@ -1,6 +1,5 @@
 ﻿namespace WizardWorld.Persistance.Models.MagicalCreatures {
     public enum CreatureDangerousnessLevel {
-        // X, XX, XXX, XXXX, XXXXX TODO
         None = 0,
         X = 1,
         XX = 2,

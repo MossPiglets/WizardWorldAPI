@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
-using MediatR.AspNet.Exceptions;
 using WizardWorld.Application.Services.EmailProviders;
 
 namespace WizardWorld.Application.Requests.Feedback.Commands.SendFeedback {

@@ -1,13 +1,9 @@
 ﻿using AutoMapper;
-using Bogus;
 using FluentAssertions;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using WizardWorld.Application.Requests.MagicalCreatures;
-using WizardWorld.Persistance.Models.MagicalCreatures;
-using WizardWorldApi.Tests.Shared.Generators;
+using WizardWorldApi.Tests.Shared;
 
 
 namespace WizardWorldApi.Tests.Unit {
@@ -37,7 +33,7 @@ namespace WizardWorldApi.Tests.Unit {
             magicalCreatureDto.Status.Should().Be(magicalCreature.Status);
             magicalCreatureDto.DangerousnessLevel.Should().Be(magicalCreature.DangerousnessLevel);
             magicalCreatureDto.NativeTo.Should().Be(magicalCreature.NativeTo);
-            magicalCreatureDto.CreatureRelations.Should().BeEquivalentTo(magicalCreature.CreatureRelations);
+            magicalCreatureDto.CreatureRelations.Should().BeEquivalentTo(magicalCreature.CreatureRelations,o=>o.ExcludingMissingMembers());
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using WizardWorld.Persistance.Models.Elixirs;
 using WizardWorld.Persistance.Models.Ingredients;
 
 namespace WizardWorld.Application.Requests.Ingredients {

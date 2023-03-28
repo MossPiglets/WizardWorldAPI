@@ -8,7 +8,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using WizardWorld.Application.Requests.MagicalCreatures;
 using WizardWorldApi.Tests.Integrations.Extensions;
-using WizardWorldApi.Tests.Shared.Generators;
+using WizardWorldApi.Tests.Shared;
 
 namespace WizardWorldApi.Tests.Integrations.Tests {
     class MagicalCreatureControllerTests {
@@ -35,7 +35,7 @@ namespace WizardWorldApi.Tests.Integrations.Tests {
             var magicalCreatures = await response.Content.DeserializeAsync<List<MagicalCreatureDto>>();
             // Assert
             magicalCreatures.Should().NotBeEmpty();
-            magicalCreatures.Should().BeEquivalentTo(expectedCreatures);
+            magicalCreatures.Should().BeEquivalentTo(expectedCreatures, o=>o.ExcludingMissingMembers());
         }
 
         [Test]
@@ -47,7 +47,7 @@ namespace WizardWorldApi.Tests.Integrations.Tests {
             response.StatusCode.Should().Be(HttpStatusCode.OK);
             var spell = await response.Content.DeserializeAsync<MagicalCreatureDto>();
             // Assert
-            spell.Should().BeEquivalentTo(expectedCreature);
+            spell.Should().BeEquivalentTo(expectedCreature, o=>o.ExcludingMissingMembers());
         }
 
         [Test]

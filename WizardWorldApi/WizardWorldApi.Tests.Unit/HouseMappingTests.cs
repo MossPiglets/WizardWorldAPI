@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using AutoMapper;
 using FluentAssertions;
-using FluentAssertions.Equivalency;
 using NUnit.Framework;
 using WizardWorld.Application.Requests.Houses;
 using WizardWorldApi.Tests.Shared;
