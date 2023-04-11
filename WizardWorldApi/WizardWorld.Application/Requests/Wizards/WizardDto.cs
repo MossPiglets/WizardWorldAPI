@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using WizardWorld.Application.Requests.Elixirs;
 
 namespace WizardWorld.Application.Requests.Wizards {
     public class WizardDto {

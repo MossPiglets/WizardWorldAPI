@@ -17,8 +17,7 @@ namespace WizardWorldApi.Extensions {
                 logger.LogInformation("Migration started");
                 context.Database.Migrate();
                 logger.LogInformation("Migration finished");
-            }
-            else {
+            } else {
                 logger.LogInformation("Migration not needed");
             }
             return host;

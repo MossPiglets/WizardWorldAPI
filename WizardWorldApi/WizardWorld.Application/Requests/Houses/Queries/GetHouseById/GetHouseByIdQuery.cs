@@ -1,8 +1,8 @@
-﻿using System;
-using MediatR.AspNet;
+﻿using MediatR.AspNet;
+using System;
 
 namespace WizardWorld.Application.Requests.Houses.Queries.GetHouseById {
     public class GetHouseByIdQuery : IQuery<HouseDto> {
-		public Guid Id { get; set; }
-	}
+        public Guid Id { get; set; }
+    }
 }

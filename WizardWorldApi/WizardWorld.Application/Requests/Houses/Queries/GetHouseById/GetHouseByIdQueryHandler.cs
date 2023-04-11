@@ -1,21 +1,21 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using MediatR;
 using MediatR.AspNet.Exceptions;
 using Microsoft.EntityFrameworkCore;
+using System.Threading;
+using System.Threading.Tasks;
 using WizardWorld.Persistance;
 using WizardWorld.Persistance.Models.Houses;
 
 namespace WizardWorld.Application.Requests.Houses.Queries.GetHouseById {
-	public class GetHouseByIdQueryHandler : IRequestHandler<GetHouseByIdQuery, HouseDto> {
-		private readonly ApplicationDbContext _context;
-		private readonly IMapper _mapper;
+    public class GetHouseByIdQueryHandler : IRequestHandler<GetHouseByIdQuery, HouseDto> {
+        private readonly ApplicationDbContext _context;
+        private readonly IMapper _mapper;
 
-		public GetHouseByIdQueryHandler(ApplicationDbContext context, IMapper mapper) {
-			_context = context;
-			_mapper = mapper;
-		}
+        public GetHouseByIdQueryHandler(ApplicationDbContext context, IMapper mapper) {
+            _context = context;
+            _mapper = mapper;
+        }
 
 		public async Task<HouseDto> Handle(GetHouseByIdQuery request, CancellationToken cancellationToken) {
 			var houseEntity = await _context.Houses
@@ -27,7 +27,7 @@ namespace WizardWorld.Application.Requests.Houses.Queries.GetHouseById {
 				throw new NotFoundException(typeof(House), request.Id.ToString());
 			}
 
-			return _mapper.Map<HouseDto>(houseEntity);
-		}
-	}
+            return _mapper.Map<HouseDto>(houseEntity);
+        }
+    }
 }

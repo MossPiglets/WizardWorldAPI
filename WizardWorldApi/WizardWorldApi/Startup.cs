@@ -9,7 +9,6 @@ using MediatR.AspNet;
 using Newtonsoft.Json.Converters;
 using WizardWorld.Application;
 using WizardWorld.Persistance;
-using Microsoft.AspNetCore.Mvc;
 using WizardWorldApi.Extensions;
 
 namespace WizardWorldApi {

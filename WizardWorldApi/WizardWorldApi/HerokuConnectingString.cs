@@ -1,6 +1,5 @@
-﻿using System;
-using MediatR.AspNet.Exceptions;
-using Npgsql;
+﻿using Npgsql;
+using System;
 
 namespace WizardWorldApi {
     public static class HerokuConnectingString {

@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using WizardWorld.Application.Requests.Houses;
 using WizardWorld.Application.Requests.Houses.Queries.GetHouseById;
 using WizardWorld.Application.Requests.Houses.Queries.GetHouses;
-using WizardWorld.Persistance.Models.Houses;
 
 namespace WizardWorldApi.Controllers {
     [ApiController]
