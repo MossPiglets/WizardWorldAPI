@@ -1,8 +1,12 @@
 ﻿using System.Threading.Tasks;
-using SendGrid;
 
 namespace WizardWorld.Application.Services.EmailProviders {
     public interface IEmailProvider {
-        Task<Response> SendFeedbackEmailAsync(FeedbackEmail feedbackEmail);
+        Task<EmailResult> SendFeedbackEmailAsync(FeedbackEmail feedbackEmail);
+    }
+
+    public class EmailResult
+    {
+        public bool IsSuccess { get; set; }
     }
 }

@@ -62,7 +62,9 @@ app.UseCors(policyBuilder =>
 app.MapControllers();
 
 // Apply migrations and seed data before running
-app.Migrate().Seed().Run();
+await app.MigrateAsync();
+app.Seed();
+await app.RunAsync();
 
 // For WebApplicationFactory<Program> compatibility in tests
 namespace WizardWorldApi { public partial class Program { } }

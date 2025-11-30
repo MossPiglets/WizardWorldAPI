@@ -1,13 +1,15 @@
 ﻿services:
   database:
-    # Official Postgres image from DockerHub (we use the last version)
-    image: 'postgres:latest'
-
+    image: postgres:16
+    container_name: pg
+    restart: unless-stopped
     ports:
-      - "7165:5432"
-
+      - "5433:5432"
     environment:
       POSTGRES_USER: postgres # The PostgreSQL user (useful to connect to the database)
       POSTGRES_PASSWORD: MossPiglets # The PostgreSQL password (useful to connect to the database)
       POSTGRES_DB: WizardWorld # The PostgreSQL default database (automatically created at first launch)
-
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata:

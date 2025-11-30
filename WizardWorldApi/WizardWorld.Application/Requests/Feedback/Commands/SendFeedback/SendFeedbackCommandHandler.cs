@@ -14,7 +14,7 @@ namespace WizardWorld.Application.Requests.Feedback.Commands.SendFeedback {
         }
         public async Task Handle(SendFeedbackCommand request, CancellationToken cancellationToken) {
             var response = await _provider.SendFeedbackEmailAsync(_mapper.Map<FeedbackEmail>(request));
-            if (response.StatusCode == System.Net.HttpStatusCode.Accepted) {
+            if (response.IsSuccess) {
                 return;
             }
 
