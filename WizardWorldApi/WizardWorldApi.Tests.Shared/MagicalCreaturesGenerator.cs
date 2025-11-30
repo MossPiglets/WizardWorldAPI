@@ -8,7 +8,8 @@ namespace WizardWorldApi.Tests.Shared {
         public static IEnumerable<MagicalCreature> MagicalCreatures { get; set; }
 
         static MagicalCreaturesGenerator() {
-            
+            // TODO Will be added later
+            return;
             var magicalCreatureFaker = new Faker<MagicalCreature>()
                 .RuleFor(a => a.Id, f => Guid.NewGuid())
                 .RuleFor(a => a.Name, f => f.Lorem.Sentence())
