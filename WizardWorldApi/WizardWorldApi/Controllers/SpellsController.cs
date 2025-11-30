@@ -1,8 +1,8 @@
-﻿using System;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
 using WizardWorld.Application.Requests.Spells;
 using WizardWorld.Application.Requests.Spells.Queries.GetSpellById;
 using WizardWorld.Application.Requests.Spells.Queries.GetSpells;

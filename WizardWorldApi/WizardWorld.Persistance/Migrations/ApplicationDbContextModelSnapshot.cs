@@ -182,6 +182,48 @@ namespace WizardWorld.Persistance.Migrations
                     b.ToTable("Ingredients");
                 });
 
+            modelBuilder.Entity("WizardWorld.Persistance.Models.MagicalCreatures.CreatureRelation", b =>
+                {
+                    b.Property<Guid>("CreatureId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("RelatedCreatureId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("CreatureId", "RelatedCreatureId");
+
+                    b.ToTable("CreatureRelation");
+                });
+
+            modelBuilder.Entity("WizardWorld.Persistance.Models.MagicalCreatures.MagicalCreature", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Classification")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("DangerousnessLevel")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.Property<string>("NativeTo")
+                        .HasColumnType("text");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MagicalCreatures");
+                });
+
             modelBuilder.Entity("WizardWorld.Persistance.Models.Spells.Spell", b =>
                 {
                     b.Property<Guid>("Id")
@@ -279,11 +321,25 @@ namespace WizardWorld.Persistance.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("WizardWorld.Persistance.Models.MagicalCreatures.CreatureRelation", b =>
+                {
+                    b.HasOne("WizardWorld.Persistance.Models.MagicalCreatures.MagicalCreature", null)
+                        .WithMany("CreatureRelations")
+                        .HasForeignKey("CreatureId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("WizardWorld.Persistance.Models.Houses.House", b =>
                 {
                     b.Navigation("Heads");
 
                     b.Navigation("Traits");
+                });
+
+            modelBuilder.Entity("WizardWorld.Persistance.Models.MagicalCreatures.MagicalCreature", b =>
+                {
+                    b.Navigation("CreatureRelations");
                 });
 #pragma warning restore 612, 618
         }

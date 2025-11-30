@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
-using MediatR.AspNet.Exceptions;
 using WizardWorld.Application.Services.EmailProviders;
 
 namespace WizardWorld.Application.Requests.Feedback.Commands.SendFeedback {
@@ -13,10 +12,10 @@ namespace WizardWorld.Application.Requests.Feedback.Commands.SendFeedback {
             _mapper = mapper;
             _provider = provider;
         }
-        public async Task<Unit> Handle(SendFeedbackCommand request, CancellationToken cancellationToken) {
+        public async Task Handle(SendFeedbackCommand request, CancellationToken cancellationToken) {
             var response = await _provider.SendFeedbackEmailAsync(_mapper.Map<FeedbackEmail>(request));
-            if (response.StatusCode == System.Net.HttpStatusCode.Accepted) {
-                return Unit.Value;
+            if (response.IsSuccess) {
+                return;
             }
 
             throw new EmailServiceFailureException("Email service failed");

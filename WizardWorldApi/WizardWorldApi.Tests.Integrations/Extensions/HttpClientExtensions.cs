@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.WebUtilities;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.WebUtilities;
 
 namespace WizardWorldApi.Tests.Integrations.Extensions {
     public static class HttpClientExtensions {

@@ -1,6 +1,5 @@
-﻿using System;
-using MediatR.AspNet.Exceptions;
-using Npgsql;
+﻿using Npgsql;
+using System;
 
 namespace WizardWorldApi {
     public static class HerokuConnectingString {
@@ -19,8 +18,8 @@ namespace WizardWorldApi {
                 Password = userInfo[1],
                 Database = databaseUri.LocalPath.TrimStart('/'),
                 SslMode = SslMode.Require,
-                TrustServerCertificate = true
             };
+            
 
             return builder.ToString();
         }

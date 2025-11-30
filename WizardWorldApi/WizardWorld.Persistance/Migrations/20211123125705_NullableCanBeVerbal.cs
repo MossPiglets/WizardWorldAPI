@@ -1,11 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace WizardWorld.Persistance.Migrations
-{
-    public partial class NullableCanBeVerbal : Migration
-    {
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
+namespace WizardWorld.Persistance.Migrations {
+    public partial class NullableCanBeVerbal : Migration {
+        protected override void Up(MigrationBuilder migrationBuilder) {
             migrationBuilder.AlterColumn<bool>(
                 name: "CanBeVerbal",
                 table: "Spells",
@@ -15,8 +12,7 @@ namespace WizardWorld.Persistance.Migrations
                 oldType: "boolean");
         }
 
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
+        protected override void Down(MigrationBuilder migrationBuilder) {
             migrationBuilder.AlterColumn<bool>(
                 name: "CanBeVerbal",
                 table: "Spells",
