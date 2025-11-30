@@ -22,4 +22,10 @@
     <ProjectReference Include="..\WizardWorld.Application\WizardWorld.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Include="..\compose.yaml">
+      <Link>compose.yaml</Link>
+    </Content>
+  </ItemGroup>
+
 </Project>
