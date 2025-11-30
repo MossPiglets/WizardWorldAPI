@@ -21,8 +21,11 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+      - name: Install Heroku CLI # <- IMPORTANT!!! Make sure the cli is installed before using the action
+        run: |
+          curl https://cli-assets.heroku.com/install.sh | sh 
       - name: Deploy to Heroku
-        uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+      - uses: akhileshns/heroku-deploy@v3.14.15 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_KEY}}
           heroku_app_name: wizard-world-api #Must be unique in Heroku
