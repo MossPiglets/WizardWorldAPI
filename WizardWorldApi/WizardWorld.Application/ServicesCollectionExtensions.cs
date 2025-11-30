@@ -9,7 +9,7 @@ namespace WizardWorld.Application {
         public static void AddApplication(this IServiceCollection services) {
             services.AddScoped<IEmailProvider, SendGridEmailProvider>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            services.AddMediatR(typeof(GetSpellsQuery));
+            services.AddMediatR(c => c.RegisterServicesFromAssemblyContaining<IApplicationMarker>());
         }
     }
 }

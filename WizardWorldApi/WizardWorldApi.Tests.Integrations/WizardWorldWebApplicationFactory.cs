@@ -6,9 +6,10 @@ using System;
 using System.Linq;
 using WizardWorld.Application.Services.EmailProviders;
 using WizardWorld.Persistance;
+using WizardWorldApi;
 
 namespace WizardWorldApi.Tests.Integrations {
-    public class WizardWorldWebApplicationFactory : WebApplicationFactory<Startup> {
+    public class WizardWorldWebApplicationFactory : WebApplicationFactory<Program> {
         protected override void ConfigureWebHost(IWebHostBuilder builder) {
             builder.ConfigureServices((Action<IServiceCollection>)(services => {
                 var descriptor = services.Single(d =>

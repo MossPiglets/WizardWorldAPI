@@ -18,7 +18,6 @@ namespace WizardWorldApi {
                 Password = userInfo[1],
                 Database = databaseUri.LocalPath.TrimStart('/'),
                 SslMode = SslMode.Require,
-                TrustServerCertificate = true
             };
             
 

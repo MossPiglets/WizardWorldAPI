@@ -4,12 +4,11 @@ using System.Collections.Generic;
 using WizardWorld.Persistance.Models.MagicalCreatures;
 
 namespace WizardWorldApi.Tests.Shared {
-    public class MagicalCreaturesGenerator {
-        public static IEnumerable<MagicalCreature> MagicalCreatures { get; set; }
+    public class MagicalCreaturesGenerator
+    {
+        public static IEnumerable<MagicalCreature> MagicalCreatures { get; set; } = [];
 
         static MagicalCreaturesGenerator() {
-            // TODO Will be added later
-            return;
             var magicalCreatureFaker = new Faker<MagicalCreature>()
                 .RuleFor(a => a.Id, f => Guid.NewGuid())
                 .RuleFor(a => a.Name, f => f.Lorem.Sentence())

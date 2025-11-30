@@ -14,8 +14,8 @@ namespace WizardWorldApi.Controllers {
         }
 
         [HttpPost]
-        public async Task<Unit> Post(SendFeedbackCommand command) {
-            return await _mediator.Send(command);
+        public async Task Post(SendFeedbackCommand command) {
+            await _mediator.Send(command);
         }
     }
 }
