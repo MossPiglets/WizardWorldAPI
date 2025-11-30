@@ -1,6 +1,4 @@
-﻿using System.Net;
-using System.Threading.Tasks;
-using SendGrid;
+﻿using System.Threading.Tasks;
 using WizardWorld.Application.Services.EmailProviders;
 using WizardWorldApi.Tests.Integrations.Data;
 
